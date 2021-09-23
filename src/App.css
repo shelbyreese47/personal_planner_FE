@@ -1,5 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa&display=swap');
+
 .App {
   text-align: center;
+  background-image: url("https://i.redd.it/39mya5hs25x01.jpg");
+position: fixed;
+min-width: 100% ;
+min-height: 100%;
+background-size: cover;
+background-position: center;
+
+
+
 }
 
 .App-logo {
@@ -39,5 +50,15 @@
 
 nav{
 background-color: black;
+
+}
+
+.container
+{
+font-family: 'Lexend Exa', sans-serif;
+background-size: cover; 
+display: inline-table;
+
+
 
 }

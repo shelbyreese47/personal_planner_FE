@@ -1,13 +1,223 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Lato&family=Lexend+Exa&family=Montserrat&family=Oswald&family=Plaster&family=Rock+Salt&family=Source+Sans+Pro&display=swap');
+
 body {
+  font-family: 'permanent marker', cursive;
+
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+    color: white; 
+
 }
 
 code {
+  font-family: 'Lexend Exa', sans-serif;
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.container
+{
+font-family: 'Lexend Exa', sans-serif;
+display: grid 
+height = 100%;
+justify-items: stretch;
+grid-gap: 1px; 
+align-content: space-between;
+grid-template-rows: 1fr,2fr, 1fr;
+/* grid-auto-rows: minmax(100px, auto); */
+grid-template-columns: 1fr, 1fr, 1fr; 
+
+
+
+
+
+}
+
+
+
+.menu
+{
+    color: white;
+ 
+
+
+}
+
+.quote
+{
+
+  display: grid;
+  color: white;
+  justify-items: center;
+  align-items: center;
+  justify-self: center;
+}
+
+
+
+
+
+
+
+
+
+html { 
+  background: url(./bkg1.jpeg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}
+
+.time
+{
+  display: grid;
+  font-family: 'Oswald', sans-serif;
+  color: white; 
+  font-size: 500%;
+  align-items: center;
+  justify-items: center;
+
+}
+
+.weather
+{
+font-family: 'Lexend Exa', cursive;
+    color: white; 
+  font-size: 190%;
+
+  grid-column: 3;
+
+
+
+
+}
+
+.note{
+ font-family: 'Lexend Exa', cursive;
+  background-color: #8aadc5 ;
+  margin-bottom: 10px; 
+  padding: 1rem;
+  border-radius: 10px;
+  min-height: 170px; 
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between;
+
+
+}
+
+.note-footer
+{
+  font-family: 'Lexend Exa', cursive;
+  display: flex; 
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+
+.notes-list
+{
+  font-family: 'Lexend Exa', cursive;
+  display: grid; 
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.Container2
+{
+max-width:  960px;
+margin-right: auto;
+margin-left: auto;
+padding-right: 15px;
+padding-left: 15px;
+font-family: 'Oswald', cursive;
+
+}
+
+.note.new
+{
+background-color: #8aadc5 ;
+font-family: 'Lexend Exa', cursive;
+
+
+}
+
+textarea{
+border: none;
+resize: none;
+background-color: #8aadc5 ;
+
+
+}
+
+textarea:focus{
+outline: none; 
+
+
+}
+
+.save{
+background-color: #e1e1e1 ;
+border:none;
+border-radius: 15px;
+padding: 5px, 10px, 5px, 10px; 
+
+}
+
+.save:hover{
+
+background-color: skyblue;
+cursor: pointer;
+
+}
+
+.delete-icon
+{
+cursor: pointer; 
+
+}
+
+.date
+{
+  display: grid;
+  font-family: 'Oswald', sans-serif;
+  color: white; 
+  font-size:200%;
+  justify-content: end;
+
+
+}
+
+.weatherstatus
+{
+  display: grid;
+ font-size: 170%;
+ justify-self: end
+
+
+ 
+}
+
+.location
+{
+
+  display: grid;
+ font-size: 200%;
+  display: grid;
+  justify-self: end
+
+  
+
 }
