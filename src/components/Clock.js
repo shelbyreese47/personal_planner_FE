@@ -10,6 +10,10 @@ useEffect(() => {
         const date = new Date(); 
         setClockState(date.toLocaleTimeString());
     }, 1000);
+
+    	return () => {
+				setClockState({}); // This worked for me
+			};
     
 }, []); 
 
@@ -25,3 +29,4 @@ useEffect(() => {
 };
 
 export default Clock;
+
