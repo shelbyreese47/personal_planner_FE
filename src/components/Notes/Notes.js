@@ -1,4 +1,4 @@
-import { getDefaultNormalizer } from '@testing-library/react';
+
 import { nanoid } from 'nanoid';
 import {useState} from 'react';
 import Note from '../Note/Note'

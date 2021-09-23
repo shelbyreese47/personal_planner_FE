@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import Notes from './Notes/Notes';
+
 
 const AddNote = ({handleAddNote}) => {
 

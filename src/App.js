@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Home from './components/Home/Home';
 import Contacts from './components/Contacts/Contacts';
 import Notes from './components/Notes/Notes';
 import TodoList from './components/TodoList/TodoList';
-import { Route, Link, Redirect } from 'react-router-dom';
-import Clock from './components/Clock'
-import { getDefaultNormalizer } from '@testing-library/react';
-import { nanoid } from 'nanoid';
+import { Route, Link } from 'react-router-dom';
+
 
 
 function App() {
