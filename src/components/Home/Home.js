@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Clock from '../Clock';
-import apiConfig from '../../apikeys';
+// import apiConfig from '../../apikeys';
 
 const Home = () => {
 	const [home, setHome] = useState();
@@ -9,7 +9,9 @@ const Home = () => {
 
 
 	useEffect(() => {
-		fetch(`https://api.openweathermap.org/data/2.5/weather?q=Boston&appid=${apiConfig.weatherAPIKey}&units=imperial`)
+		fetch(
+			`https://api.openweathermap.org/data/2.5/weather?q=Boston&appid=5ecef11cefb74010e2528b942ae24f55&units=imperial`
+		)
 			.then((res) => res.json())
 			.then((json) => {
 				setHome(json);
