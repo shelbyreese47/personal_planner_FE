@@ -31,13 +31,13 @@ const TodoList = () => {
 
 			//eslint-disable-next-line
 		}, [])
+
        let veryHighP = todos.filter((todo) => todo.priority === 'Very High' && todo.completed === false);
        let highP = todos.filter((todo) => todo.priority === 'High' && todo.completed === false);
        let mediumP = todos.filter((todo) => todo.priority === 'Medium' && todo.completed === false);
        let lowP = todos.filter((todo) => todo.priority === 'Low' && todo.completed === false);
        let completed = todos.filter((todo) => todo.completed === true);
-				// console.log(highP);
-                // console.log(highP[0].content)
+
     return (
 			<div>
 				<h3>Very High Priority</h3>
