@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import axios  from 'axios';
 // const axios = require('axios').default;
-const AddTodo = ({ handleAddTodo }) => {
+const AddTodo = ({ handleAddTodo, setTodos }) => {
 	let initialState = {
 		date: '',
 		dueDate: '',
 		user: '',
 		content: '',
-		priority: '',
+		priority: 'Click here t',
 		completed: false,
 	};
 
@@ -23,16 +23,31 @@ const AddTodo = ({ handleAddTodo }) => {
 			handleAddTodo(todoText);
 		// 	setTodoText(initialState);
 		console.log(todoText);
-		axios.post(`http://localhost:8000/api/todos`, {
+		axios.post(`https://safe-springs-78643.herokuapp.com/api/todos`, {
 			date: new Date().toLocaleDateString(),
 			dueDate: todoText.dueDate,
 			user: todoText.user,
 			content: todoText.content,
 			priority: todoText.priority,
-			completed: todoText.completed
+			completed: todoText.completed,
 		});
 		setTodoText(initialState);
+		axios.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
+		.then(response => { 
+			setTodos(response.data)
+		}).catch((err) => {
+			console.log(err)
+		})
 	};
+
+
+
+
+
+	//  axios.get('http://localhost:3000/gifs').then(response => {
+  // gets the initial data
+//   addPictures(response.data)
+// })
 
 	return (
 		// "_id": "615f15dec218e49e354c5365",
@@ -65,7 +80,7 @@ const AddTodo = ({ handleAddTodo }) => {
 					onChange={handleChange}></textarea>
 				<label>Priority</label>
 				<select id='priority' onChange={handleChange}>
-					<option>Click here to select priority</option>
+					<option value="default">Click here to select priority</option>
 					<option value='Very High'>Very High Priority</option>
 					<option value='High'>High Priority</option>
 					<option value='Medium'>Medium Priority</option>

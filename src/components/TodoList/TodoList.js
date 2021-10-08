@@ -7,7 +7,7 @@ const TodoList = () => {
     const [todos, setTodos] = useState([]);
 	const [count, setCount] = useState([]);
     
-    const url = "http://localhost:8000/api/todos";
+    const url = 'https://safe-springs-78643.herokuapp.com/api/todos';
     
       const handleAddTodo = (todo) => {
                 // const date = new Date(); 
@@ -94,7 +94,7 @@ const TodoList = () => {
 						<li key={`${todo} - ${index}`}>{todo.content}</li>
 					))}
 				</ul>
-                <AddTodo handleAddTodo = {handleAddTodo} />
+                <AddTodo setTodos= {setTodos} handleAddTodo = {handleAddTodo} />
 			</div>
 		);
 };
