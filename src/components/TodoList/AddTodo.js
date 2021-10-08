@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import axios  from 'axios';
+import { render } from 'react-dom';
+
+
 // const axios = require('axios').default;
 const AddTodo = ({ handleAddTodo, setTodos }) => {
 	let initialState = {
@@ -7,18 +10,27 @@ const AddTodo = ({ handleAddTodo, setTodos }) => {
 		dueDate: '',
 		user: '',
 		content: '',
-		priority: 'Click here t',
+		priority: '',
 		completed: false,
 	};
 
 	const [todoText, setTodoText] = useState(initialState);
+
+
+
 
 	const handleChange = (event) => {
 		// setTodoText(event.target.value);
 		setTodoText({ ...todoText, [event.target.id]: event.target.value });
 	};
 
+
 	const handleSaveClick = () => {
+
+       let arrPrior = ['Very High','High','Medium','Low']
+	   if(arrPrior.includes(todoText.priority))
+      {
+
 		// if (todoText.length > 0) {
 			handleAddTodo(todoText);
 		// 	setTodoText(initialState);
@@ -31,6 +43,7 @@ const AddTodo = ({ handleAddTodo, setTodos }) => {
 			priority: todoText.priority,
 			completed: todoText.completed,
 		});
+	  }
 		setTodoText(initialState);
 		axios.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
 		.then(response => { 
@@ -38,7 +51,9 @@ const AddTodo = ({ handleAddTodo, setTodos }) => {
 		}).catch((err) => {
 			console.log(err)
 		})
-	};
+		// submitForm();
+		
+}
 
 
 
@@ -79,8 +94,8 @@ const AddTodo = ({ handleAddTodo, setTodos }) => {
 					value={todoText.content}
 					onChange={handleChange}></textarea>
 				<label>Priority</label>
-				<select id='priority' onChange={handleChange}>
-					<option value="default">Click here to select priority</option>
+				<select required id='priority' value={todoText.priority} onChange={handleChange}>
+					<option value="Click here to select priority" >Click here to select priority</option>
 					<option value='Very High'>Very High Priority</option>
 					<option value='High'>High Priority</option>
 					<option value='Medium'>Medium Priority</option>
@@ -89,7 +104,7 @@ const AddTodo = ({ handleAddTodo, setTodos }) => {
 				{/* <span className= "">completed: false</span> */}
 			</form>
 			<div className='note-footer'>
-				<button className='save' onClick={handleSaveClick}>
+				<button onClick={handleSaveClick}>
 					Save
 				</button>
 			</div>

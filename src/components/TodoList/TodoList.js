@@ -29,6 +29,12 @@ const TodoList = () => {
 
 
 			}; 
+		const updateTodo= (todo)=>{
+			console.log(todo)
+		}
+		const deleteTodo= (todo)=>{
+			console.log(todo)
+		}
 
     useEffect(() => {
 		function getData() {
@@ -67,31 +73,31 @@ const TodoList = () => {
 				<h3>Very High Priority</h3>
 				<ul>
 					{veryHighP.map((todo, index) => (
-						<li key={`${todo} - ${index}`}>{todo.content}</li>
+						<li key={`${todo} - ${index}`}>{todo.content}<button onClick={updateTodo}>Update</button><button onClick={deleteTodo}>Delete</button></li>
 					))}
 				</ul>
 				<h3>High Priority</h3>
 				<ul>
 					{highP.map((todo, index) => (
-						<li key={`${todo} - ${index}`}>{todo.content}</li>
+						<li key={`${todo} - ${index}`}>{todo.content}<button onClick={updateTodo}>Update</button><button onClick={deleteTodo}>Delete</button></li>
 					))}
 				</ul>
 				<h3>Medium Priority</h3>
 				<ul>
 					{mediumP.map((todo, index) => (
-						<li key={`${todo} - ${index}`}>{todo.content}</li>
+						<li key={`${todo} - ${index}`}>{todo.content}<button onClick={updateTodo}>Update</button><button onClick={deleteTodo}>Delete</button></li>
 					))}
 				</ul>
 				<h3>Low Priority</h3>
 				<ul>
 					{lowP.map((todo, index) => (
-						<li key={`${todo} - ${index}`}>{todo.content}</li>
+						<li key={`${todo} - ${index}`}>{todo.content}<button onClick={updateTodo}>Update</button><button onClick={deleteTodo}>Delete</button></li>
 					))}
 				</ul>
 				<h3>Completed</h3>
 				<ul>
 					{completed.map((todo, index) => (
-						<li key={`${todo} - ${index}`}>{todo.content}</li>
+						<li key={`${todo} - ${index}`}>{todo.content} <button onClick={updateTodo}>Update</button><button onClick={deleteTodo}>Delete</button></li>
 					))}
 				</ul>
                 <AddTodo setTodos= {setTodos} handleAddTodo = {handleAddTodo} />
