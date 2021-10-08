@@ -155,11 +155,8 @@ font-family: 'Lexend Exa', cursive;
 }
 
 textarea{
-border: none;
-resize: none;
-background-color: #8aadc5 ;
-
-
+  background-color: whitesmoke;
+  border: 2px solid black;
 }
 
 textarea:focus{
