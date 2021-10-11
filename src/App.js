@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Home from './components/Home/Home';
 import Contacts from './components/Contacts/Contacts';
 import Notes from './components/Notes/Notes';
 import TodoList from './components/TodoList/TodoList';
 import { Route, Link } from 'react-router-dom';
+import UpdateTodo from './components/TodoList/UpdateTodo'
 
 
 
 function App() {
-
+const [count, setCount] = useState([]);
 
 
 
@@ -18,10 +19,7 @@ function App() {
 
 	return (
 		<div className='container'>
-		
-			<header>
-			
-			</header>
+			<header></header>
 
 			<div className='menu'>
 				<Link to='/'>Home </Link>
@@ -30,10 +28,18 @@ function App() {
 				<Link to='/Contacts'> Contacts</Link>
 				<Route exact path='/' component={Home} />
 				<Route exact path='/Notes' component={Notes} />
-				<Route exact path='/TodoList' component={TodoList} />
+				<Route
+					exact
+					path='/TodoList'
+					render={() => <TodoList count={count} setCount={setCount} />}
+				/>
 				<Route exact path='/Contacts' component={Contacts} />
+				<Route
+					exact
+					path='/TodoList/:id'
+					render={() => <UpdateTodo count={count} setCount={setCount} />}
+				/>
 			</div>
-             
 
 			<main></main>
 		</div>
