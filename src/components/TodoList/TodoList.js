@@ -60,18 +60,19 @@ const TodoList = ({setCount, count}) => {
 		let id = todo.target.id;
 
 		axios.put(`https://safe-springs-78643.herokuapp.com/api/todos/${id}`, {
-				completed: true,
-			});
+				completed: completed === false ? true : false,
+			})
 		
-		
-		axios
+			axios
 			.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
 			.then((response) => {
 				setTodos(response.data);
+				setCount([...count, '']);
 			})
 			.catch((err) => {
 				console.log(err);
-			});
+			})
+		
 	}
 		
 	
@@ -214,14 +215,17 @@ const TodoList = ({setCount, count}) => {
 					{completed.map((todo, index) => (
 						<li key={`${todo} - ${index}`}>
 							{todo.content}
-							<Link to={`/TodoList/${todo._id}`}>
-								<MdUndo className='update' />
-							</Link>
+							<MdUndo
+								className='delete-icon'
+								id={todo._id}
+								onClick={completeTodo}
+							/>
 							<MdDeleteForever
 								className='delete-icon'
 								id={todo._id}
 								onClick={deleteTodo}
 							/>
+
 						</li>
 					))}
 				</ul>
