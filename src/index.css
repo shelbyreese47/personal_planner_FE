@@ -23,11 +23,11 @@ code {
     monospace;
 }
 
-.container
+.homeContainer
 {
 font-family: 'Lexend Exa', sans-serif;
-display: grid 
-height = 100%;
+display: grid
+height = 100%; 
 justify-items: stretch;
 grid-gap: 1px; 
 align-content: space-between;
@@ -44,13 +44,123 @@ grid-template-columns: 1fr, 1fr, 1fr;
 
 
 .menu
-{
-    color: white;
- 
+{ padding: 5px 5px 25px 5px;
+  background-color: rgba(22, 63, 87, .72);
+  display: grid;
+  grid-template-columns: 20% 20% 20%  ;
+  grid-template-rows: 1fr ;
+  grid-gap: 0;
+  justify-content: center;
+}
 
+.HomeNav {
+
+  grid-column: 1 / span 1 ;
+  text-align: center;
 
 }
 
+.Notes{
+  grid-column: 2  / span 1 ;
+  text-align: center;
+}
+
+.TodoList {
+    grid-column: 3  / span 1 ;
+  text-align: center;
+}
+
+a {
+  color: #bac7d3;
+  text-decoration: none;
+  font-size: larger;
+
+  
+}
+.priorities{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 18px;
+  
+}
+.todoContainer{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap:15px;
+  /* margin-top: 2.5%; */
+ justify-content:space-evenly ;
+  border-radius: 4px;
+  margin: 2.5% auto;
+  padding: 0% 50%;
+}
+
+
+
+.veryHigh{
+      border: 5px solid black;
+    border-radius: 4px;
+    width: 40vw;
+    height: auto;
+  background-color: rgba(109, 106, 106, 0.45);
+
+}
+.high{
+      border: 5px solid black;
+    border-radius: 4px;
+    width: 40vw;
+    height: auto;
+    background-color: rgba(109, 106, 106, 0.45);
+}
+
+.medium{
+    border: 5px solid black;
+    border-radius: 4px;
+    width: 40vw;
+    height: auto;
+    background-color: rgba(109, 106, 106, 0.45);
+
+
+}
+.low{
+     border: 5px solid black;
+    border-radius: 4px;
+    width: 40vw;
+    height: auto;
+    background-color: rgba(109, 106, 106, 0.45);
+}
+.completed{
+    border: 5px solid black;
+    border-radius: 4px;
+    width: 40vw;
+    height: auto;
+    background-color: rgba(109, 106, 106, 0.45);
+}
+
+button{
+  /* background-color: rgba(22, 63, 87, 0);  */
+  background-color: rgba(0, 0, 0, 0.0);
+  border: none;
+  font-weight: 800;
+  color:#91bbd6;
+  font-size: 20px;
+  /* border:rgba(22, 63, 87, 1) solid 2px; */
+  /* margin: 5px;
+  padding: 1.25px; */
+  /* border-radius: 5px;
+  background-color: white solid 1.5px; */
+  /* font-size: 15px; */ 
+  
+}
+
+
+
+
+h3{
+  font-size: 28px;
+  font-family: 'Lexend Exa', cursive;
+  font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: center;
+  padding: 2px;
+}
 .quote
 {
 
@@ -216,5 +326,30 @@ cursor: pointer;
   justify-self: end
 
   
+
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+
+}
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) { 
 
 }

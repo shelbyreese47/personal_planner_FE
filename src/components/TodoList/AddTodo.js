@@ -58,24 +58,11 @@ const AddTodo = ({ handleAddTodo, setTodos }) => {
 
 
 
-
-	//  axios.get('http://localhost:3000/gifs').then(response => {
-  // gets the initial data
-//   addPictures(response.data)
-// })
-
 	return (
-		// "_id": "615f15dec218e49e354c5365",
-		// "date": "10/6/2021",
-		// "dueDate": "11/1/2021",
-		// "user": "Pusheen",
-		// "content": "It's a me, Pusheen!",
-		// "priority": "High",
-		// "completed": false,
-		// "__v": 0
+
 
 		<div className='note new'>
-			<form>
+			<form className= "addTodo">
 				<label>Today's Date:</label>
 				<p id='date'>{new Date().toLocaleDateString()}</p>
 				<label>Due Date</label>

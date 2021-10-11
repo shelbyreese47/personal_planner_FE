@@ -18,31 +18,35 @@ const [count, setCount] = useState([]);
 
 
 	return (
-		<div className='container'>
+		
+		<div className='c'>
 			<header></header>
 
 			<div className='menu'>
-				<Link to='/'>Home </Link>
-				<Link to='/Notes'> Notes </Link>
-				<Link to='/TodoList'>Todo List </Link>
-				<Link to='/Contacts'> Contacts</Link>
+				<Link className="HomeNav" to='/'>Home </Link>
+				<Link className="Notes" to='/Notes'> Notes </Link>
+				<Link className="TodoList" to='/TodoList'>Todo List </Link>
+
+			</div>
+		
+	
+			<div className="Content" >
 				<Route exact path='/' component={Home} />
 				<Route exact path='/Notes' component={Notes} />
+				<Route exact path='/Contacts' component={Contacts} />
 				<Route
 					exact
 					path='/TodoList'
 					render={() => <TodoList count={count} setCount={setCount} />}
 				/>
-				<Route exact path='/Contacts' component={Contacts} />
-				<Route
-					exact
+					
+				<Route	exact
 					path='/TodoList/:id'
-					render={() => <UpdateTodo count={count} setCount={setCount} />}
-				/>
+					render={() => <UpdateTodo count={count} setCount={setCount} />}/>
+	
 			</div>
-
-			<main></main>
-		</div>
+			</div>	
+	
 	);
 }
 

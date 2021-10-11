@@ -47,7 +47,7 @@ const Home = () => {
 	}
 
 	return (
-		<div className='container'>
+		<div className='homeContainer'>
 			<div className='weather'>
 				<h1>{home.main.temp}°</h1>
 			</div>
