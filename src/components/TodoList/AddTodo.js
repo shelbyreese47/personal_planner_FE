@@ -1,39 +1,68 @@
 import { useState } from 'react';
+import axios  from 'axios';
+import { render } from 'react-dom';
 
 
-const AddTodo = ({ handleAddTodo }) => {
+// const axios = require('axios').default;
+const AddTodo = ({ handleAddTodo, setTodos }) => {
+	let initialState = {
+		date: '',
+		dueDate: '',
+		user: '',
+		content: '',
+		priority: '',
+		completed: false,
+	};
 
-let initialState = {
-		date:"",
-		dueDate: "",
-		user: "",
-		content: "",
-		priority: "",
-		completed: false
-}
+	const [todoText, setTodoText] = useState(initialState);
 
-			const [todoText, setTodoText] = useState(initialState);
+
 
 
 	const handleChange = (event) => {
-			
-			//setTodoText(event.target.value);
-			setTodoText({ ...todoText, [event.target.id]: event.target.value });
+		// setTodoText(event.target.value);
+		setTodoText({ ...todoText, [event.target.id]: event.target.value });
 	};
 
+
 	const handleSaveClick = () => {
-		if (todoText.trim().length > 0) {
+
+       let arrPrior = ['Very High','High','Medium','Low']
+	   if(arrPrior.includes(todoText.priority))
+      {
+
+		// if (todoText.length > 0) {
 			handleAddTodo(todoText);
-			setTodoText(initialState);
-		}
-        // axios.post(`http://localhost:8000/api/todos`, {
-        //     date: Date,
-		//     dueDate: todoText.dueDate,
-		//     user: todoText.user,
-		//     content: todoText.content,
-		//     priority: todoText.priority
-        // }
-	};
+		// 	setTodoText(initialState);
+		console.log(todoText);
+		axios.post(`https://safe-springs-78643.herokuapp.com/api/todos`, {
+			date: new Date().toLocaleDateString(),
+			dueDate: todoText.dueDate,
+			user: todoText.user,
+			content: todoText.content,
+			priority: todoText.priority,
+			completed: todoText.completed,
+		});
+	  }
+		setTodoText(initialState);
+		axios.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
+		.then(response => { 
+			setTodos(response.data)
+		}).catch((err) => {
+			console.log(err)
+		})
+		// submitForm();
+		
+}
+
+
+
+
+
+	//  axios.get('http://localhost:3000/gifs').then(response => {
+  // gets the initial data
+//   addPictures(response.data)
+// })
 
 	return (
 		// "_id": "615f15dec218e49e354c5365",
@@ -48,9 +77,7 @@ let initialState = {
 		<div className='note new'>
 			<form>
 				<label>Today's Date:</label>
-				<p id='date'>
-					{new Date().toLocaleDateString()}
-				</p>
+				<p id='date'>{new Date().toLocaleDateString()}</p>
 				<label>Due Date</label>
 				<input
 					id='dueDate'
@@ -67,15 +94,17 @@ let initialState = {
 					value={todoText.content}
 					onChange={handleChange}></textarea>
 				<label>Priority</label>
-				<select id='priority' onChange={handleChange}>
+				<select required id='priority' value={todoText.priority} onChange={handleChange}>
+					<option value="Click here to select priority" >Click here to select priority</option>
 					<option value='Very High'>Very High Priority</option>
 					<option value='High'>High Priority</option>
 					<option value='Medium'>Medium Priority</option>
 					<option value='Low'>Low Priority</option>
 				</select>
+				{/* <span className= "">completed: false</span> */}
 			</form>
 			<div className='note-footer'>
-				<button className='save' onClick={handleSaveClick}>
+				<button onClick={handleSaveClick}>
 					Save
 				</button>
 			</div>
