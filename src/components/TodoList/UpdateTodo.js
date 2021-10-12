@@ -34,7 +34,7 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 		// const newTodos = [...todos, newTodo];
 		// setTodos(...todo);
 		// setCount( count ? 0 : 1)
-		setCount([...count, '']);
+		setCount(!count);
 		// count++;
 	
 		// setTodos([...todos, todo]);
@@ -72,21 +72,27 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 				content: todoText.content,
 				priority: todoText.priority,
 				completed: todoText.completed,
-			});
-		}
-		setTodoText(initialState);
-		axios
+			})
+		
+
+		.then(setTodoText(initialState))
+		.then(axios
 			.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
 			.then((response) => {
 				setTodos(response.data);
 			})
 			.catch((err) => {
 				console.log(err);
-			});
+			}))
 
 		// submitForm();
-		history.goBack();
-	};
+		.then(history.push('/TodoList')) 
+		// <TodoList />
+		// <Link className="TodoList" to='/TodoList'>Todo List </Link>
+
+
+
+	}};
 
 	//  axios.get('http://localhost:3000/gifs').then(response => {
 	// gets the initial data
@@ -112,8 +118,8 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 					id='dueDate'
 					value={todoText.dueDate}
 					onChange={handleChange}></input>
-				<label>User</label>
-				<input id='user' value={todoText.user} onChange={handleChange}></input>
+				{/* <label>User</label>
+				<input id='user' value={todoText.user} onChange={handleChange}></input> */}
 				<label>To Do</label>
 				<textarea
 					id='content'
@@ -136,11 +142,11 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 					<option value='Medium'>Medium Priority</option>
 					<option value='Low'>Low Priority</option>
 				</select>
-				{/* <span className= "">completed: false</span> */}
-			</form>
 			<div className='note-footer'>
+				{/* <span className= "">completed: false</span> */}
 				<button onClick={handleSaveClick}>Save</button>
 			</div>
+			</form>
 		</div>
 	);
 };

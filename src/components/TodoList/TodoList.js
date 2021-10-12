@@ -3,26 +3,19 @@ import React, { useEffect, useState } from 'react';
 import { Route, Link } from 'react-router-dom';
 import AddTodo from './AddTodo';
 import axios from 'axios';
-import {
-	MdDeleteForever,
-	MdOutlineDone,
-	MdEdit,
-	MdUndo
-} from 'react-icons/md';
+import { MdDeleteForever, MdOutlineDone, MdEdit, MdUndo } from 'react-icons/md';
 
-const TodoList = ({setCount, count}) => {
+const TodoList = ({ setCount, count }) => {
 	const [todos, setTodos] = useState([]);
 	// const [count, setCount] = useState([]);
 
 	const url = 'https://safe-springs-78643.herokuapp.com/api/todos';
 
 	const handleAddTodo = (todo) => {
-		setCount([...count, '']);
-
+		setCount(!count);
 	};
 	// const updateTodo = async (event) => {
 	// 	console.log(event.target.id);
-
 
 	// 	axios
 	// 		.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
@@ -37,45 +30,77 @@ const TodoList = ({setCount, count}) => {
 	// const id = todos._id;
 	// console.log(id);
 
-	const deleteTodo = async (event) => {
-		console.log(event.target.id);
-
-		await axios.delete(
-			`https://safe-springs-78643.herokuapp.com/api/todos/${event.target.id}`
-		);
+	const deleteTodo = (event) => {
+		event.preventDefault();
+		console.log(event.target);
 
 		axios
-			.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
-			.then((response) => {
-				setTodos(response.data);
-				setCount([...count, '']);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+			.delete(
+				`https://safe-springs-78643.herokuapp.com/api/todos/${event.target.id}`
+			)
+			.then(() => setCount(!count));
+
+		// .then( axios
+		// 	.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
+		// 	.then((response) => {
+		// 		setTodos(response.data);
+		// 		setCount([...count, '']);
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log(err);
+		// 	}))
 	};
 
 	const completeTodo = (todo) => {
-		console.log(todo)
-		let id = todo.target.id;
+		todo.preventDefault();
+		console.log(todo);
+		// let id = todo.target.id;
 
-		axios.put(`https://safe-springs-78643.herokuapp.com/api/todos/${id}`, {
-				completed: completed === false ? true : false,
-			})
-		
-			axios
-			.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
-			.then((response) => {
-				setTodos(response.data);
-				setCount([...count, '']);
-			})
-			.catch((err) => {
-				console.log(err);
-			})
-		
-	}
-		
-	
+		axios
+			.put(
+				`https://safe-springs-78643.herokuapp.com/api/todos/${todo.target.id}`,
+				{
+					completed: true,
+				}
+			)
+
+			.then(
+				axios
+					.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
+					.then((response) => {
+						setTodos(response.data);
+						setCount(!count);
+					})
+					.catch((err) => {
+						console.log(err);
+					})
+			);
+	};
+	const uncompleteTodo = (todo) => {
+		todo.preventDefault();
+		console.log(todo);
+		// let id = todo.target.id;
+
+		axios
+			.put(
+				`https://safe-springs-78643.herokuapp.com/api/todos/${todo.target.id}`,
+				{
+					completed: false,
+				}
+			)
+
+			.then(
+				axios
+					.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
+					.then((response) => {
+						setTodos(response.data);
+						setCount(!count);
+					})
+					.catch((err) => {
+						console.log(err);
+					})
+			);
+	};
 
 	useEffect(() => {
 		function getData() {
@@ -111,24 +136,28 @@ const TodoList = ({setCount, count}) => {
 				<ul className='priorities'>
 					{veryHighP.map((todo, index) => (
 						// console.log(todo)
-						<li key={`${todo} - ${index}`}>
-							{todo.content}
-							<Link to={`/TodoList/${todo._id}`}>
-								<MdEdit className='update' />
-							</Link>
+
+						<li className='todoBox' key={`${todo} - ${index}`}>
+							<p className='dueDate'>Due: {todo.dueDate}</p>
+							<p className='dueDate'>{todo.content}</p>
+							<br />
 							<span>
-								<MdDeleteForever
+								<Link to={`/TodoList/${todo._id}`}>
+									<button className='update'> 📝 </button>
+								</Link>
+
+								<button
 									className='delete-icon'
 									id={todo._id}
-									onClick={deleteTodo}
-								/>
-							</span>
-							<span>
-								<MdOutlineDone
+									onClick={deleteTodo}>
+									❌
+								</button>
+								<button
 									className='delete-icon'
 									id={todo._id}
-									onClick={completeTodo}
-								/>
+									onClick={completeTodo}>
+									✅
+								</button>
 							</span>
 						</li>
 					))}
@@ -138,23 +167,30 @@ const TodoList = ({setCount, count}) => {
 				<h3>High Priority</h3>
 				<ul className='priorities'>
 					{highP.map((todo, index) => (
-						<li key={`${todo} - ${index}`}>
-							{todo.content}
-							<Link to={`/TodoList/${todo._id}`}>
-								<MdEdit className='update' />
-							</Link>
+						<li className='todoBox' key={`${todo} - ${index}`}>
+							<p className='dueDate'>Due: {todo.dueDate}</p>
 
-							<MdDeleteForever
-								className='delete-icon'
-								id={todo._id}
-								onClick={deleteTodo}
-							/>
+							<p className='dueDate'>{todo.content}</p>
+							<br />
+							<span>
+								<Link to={`/TodoList/${todo._id}`}>
+									<button className='update'> 📝 </button>
+								</Link>
 
-							<MdOutlineDone
-								className='delete-icon'
-								id={todo._id}
-								onClick={completeTodo}
-							/>
+								<button
+									className='delete-icon'
+									id={todo._id}
+									onClick={deleteTodo}>
+									❌
+								</button>
+								<button
+									className='delete-icon'
+									id={todo._id}
+									onClick={completeTodo}>
+									✅
+								</button>
+							</span>
+
 						</li>
 					))}
 				</ul>
@@ -163,23 +199,30 @@ const TodoList = ({setCount, count}) => {
 				<h3>Medium Priority</h3>
 				<ul className='priorities'>
 					{mediumP.map((todo, index) => (
-						<li key={`${todo} - ${index}`}>
-							{todo.content}
-							<Link to={`/TodoList/${todo._id}`}>
-								<MdEdit className='update' />
-							</Link>
+						<li className='todoBox' key={`${todo} - ${index}`}>
+							<p className='dueDate'>Due: {todo.dueDate}</p>
 
-							<MdDeleteForever
-								className='delete-icon'
-								id={todo._id}
-								onClick={deleteTodo}
-							/>
+							<p className='dueDate'>{todo.content}</p>
+							<br />
+							<span>
+								<Link to={`/TodoList/${todo._id}`}>
+									<button className='update'> 📝 </button>
+								</Link>
 
-							<MdOutlineDone
-								className='delete-icon'
-								id={todo._id}
-								onClick={completeTodo}
-							/>
+								<button
+									className='delete-icon'
+									id={todo._id}
+									onClick={deleteTodo}>
+									❌
+								</button>
+								<button
+									className='delete-icon'
+									id={todo._id}
+									onClick={completeTodo}>
+									✅
+								</button>
+							</span>
+
 						</li>
 					))}
 				</ul>
@@ -188,23 +231,30 @@ const TodoList = ({setCount, count}) => {
 				<h3>Low Priority</h3>
 				<ul className='priorities'>
 					{lowP.map((todo, index) => (
-						<li key={`${todo} - ${index}`}>
-							{todo.content}
-							<Link to={`/TodoList/${todo._id}`}>
-								<MdEdit className='update' />
-							</Link>
+						<li className='todoBox' key={`${todo} - ${index}`}>
+							<p className='dueDate'>Due: {todo.dueDate}</p>
 
-							<MdDeleteForever
-								className='delete-icon'
-								id={todo._id}
-								onClick={deleteTodo}
-							/>
+							<p className='dueDate'>{todo.content}</p>
+							<br />
+							<span>
+								<Link to={`/TodoList/${todo._id}`}>
+									<button className='update'> 📝 </button>
+								</Link>
 
-							<MdOutlineDone
-								className='delete-icon'
-								id={todo._id}
-								onClick={completeTodo}
-							/>
+								<button
+									className='delete-icon'
+									id={todo._id}
+									onClick={deleteTodo}>
+									❌
+								</button>
+								<button
+									className='delete-icon'
+									id={todo._id}
+									onClick={completeTodo}>
+									✅
+								</button>
+							</span>
+
 						</li>
 					))}
 				</ul>
@@ -213,18 +263,29 @@ const TodoList = ({setCount, count}) => {
 				<h3>Completed</h3>
 				<ul className='priorities'>
 					{completed.map((todo, index) => (
-						<li key={`${todo} - ${index}`}>
-							{todo.content}
-							<MdUndo
-								className='delete-icon'
-								id={todo._id}
-								onClick={completeTodo}
-							/>
-							<MdDeleteForever
-								className='delete-icon'
-								id={todo._id}
-								onClick={deleteTodo}
-							/>
+						<li className='todoBox' key={`${todo} - ${index}`}>
+							<p className='dueDate'>Due: {todo.dueDate}</p>
+
+							<p className='dueDate'>{todo.content}</p>
+							<br />
+							<span>
+								<Link to={`/TodoList/${todo._id}`}>
+									<button className='update'> 📝 </button>
+								</Link>
+
+								<button
+									className='delete-icon'
+									id={todo._id}
+									onClick={deleteTodo}>
+									❌
+								</button>
+								<button
+									className='delete-icon'
+									id={todo._id}
+									onClick={uncompleteTodo}>
+									⏪
+								</button>
+							</span>
 
 						</li>
 					))}
@@ -233,6 +294,6 @@ const TodoList = ({setCount, count}) => {
 			<AddTodo setTodos={setTodos} handleAddTodo={handleAddTodo} />
 		</div>
 	);
-					};
+};
 
 export default TodoList;

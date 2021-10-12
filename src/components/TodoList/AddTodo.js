@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 
 
 // const axios = require('axios').default;
-const AddTodo = ({ handleAddTodo, setTodos }) => {
+const AddTodo = ({ handleAddTodo, setTodos, count, setCount }) => {
 	let initialState = {
 		date: '',
 		dueDate: '',
@@ -21,37 +21,36 @@ const AddTodo = ({ handleAddTodo, setTodos }) => {
 
 	const handleChange = (event) => {
 		// setTodoText(event.target.value);
+
 		setTodoText({ ...todoText, [event.target.id]: event.target.value });
 	};
 
 
-	const handleSaveClick = () => {
-
+	const handleSaveClick = (event) => {
+		event.preventDefault();
        let arrPrior = ['Very High','High','Medium','Low']
 	   if(arrPrior.includes(todoText.priority))
       {
-
-		// if (todoText.length > 0) {
-			handleAddTodo(todoText);
-		// 	setTodoText(initialState);
+		handleAddTodo(todoText);
 		console.log(todoText);
 		axios.post(`https://safe-springs-78643.herokuapp.com/api/todos`, {
 			date: new Date().toLocaleDateString(),
 			dueDate: todoText.dueDate,
-			user: todoText.user,
+			// user: todoText.user,
 			content: todoText.content,
 			priority: todoText.priority,
 			completed: todoText.completed,
-		});
-	  }
-		setTodoText(initialState);
-		axios.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
+		})
+		.then(setTodoText(initialState))
+		.then(axios.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
 		.then(response => { 
 			setTodos(response.data)
 		}).catch((err) => {
 			console.log(err)
-		})
+		}))
 		// submitForm();
+		// .then(setCount(!count));
+	}
 		
 }
 
@@ -59,42 +58,49 @@ const AddTodo = ({ handleAddTodo, setTodos }) => {
 
 
 	return (
-
-
-		<div className='note new'>
-			<form className= "addTodo">
-				<label>Today's Date:</label>
-				<p id='date'>{new Date().toLocaleDateString()}</p>
-				<label>Due Date</label>
+		<div className='note new todoFormCSS'>
+			<form className='addTodo' onSubmit ={handleSaveClick}>
+				<label className="c11"id='date'>Today's Date: {new Date().toLocaleDateString()}</label> <br/>
+				<label className="c12">Due Date</label>
 				<input
+					className="c22"
 					id='dueDate'
 					value={todoText.dueDate}
 					onChange={handleChange}></input>
-				<label>User</label>
-				<input id='user' value={todoText.user} onChange={handleChange}></input>
-				<label>To Do</label>
+				{/* <label>User</label> */}
+				{/* <input id='user' value={todoText.user} onChange={handleChange}></input> */}
+				<br/>
+				<label className="c13">To Do</label>
 				<textarea
+				className="c23"
 					id='content'
-					rows='8'
-					cols='10'
-					placeholder='type to add a note'
+					rows='1.25'
+					cols='30'
+					placeholder='type to add a new todo'
 					value={todoText.content}
 					onChange={handleChange}></textarea>
-				<label>Priority</label>
-				<select required id='priority' value={todoText.priority} onChange={handleChange}>
-					<option value="Click here to select priority" >Click here to select priority</option>
+					<br/>
+				<label className="c14">Priority</label>
+				<select
+					className="c24"
+					required
+					id='priority'
+					value={todoText.priority}
+					onChange={handleChange}>
+					<option value='Click here to select priority'>
+						Click here to select priority
+					</option>
 					<option value='Very High'>Very High Priority</option>
 					<option value='High'>High Priority</option>
 					<option value='Medium'>Medium Priority</option>
 					<option value='Low'>Low Priority</option>
 				</select>
 				{/* <span className= "">completed: false</span> */}
+				<div className='note-footer'>
+				</div>
+				<button className="c15" type='submit'>Save</button>
 			</form>
-			<div className='note-footer'>
-				<button onClick={handleSaveClick}>
-					Save
-				</button>
-			</div>
+				
 		</div>
 	);
 };
