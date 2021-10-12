@@ -80,38 +80,50 @@ a {
 .priorities{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, 75%);
+  grid-gap: 10px;
+  border-radius: 1px;
+  max-width: 400px;
+  list-style: none;
+  text-align: center;
+
+
+
+
 
 
 }
 .todoBox{
-  display: grid;
-  grid-template-columns: repeat(2,1fr); 
   grid-auto-rows: 45%;
-  grid-gap: 1px;
-  border: none;
+
+  grid-gap: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+
   font-family: 'Lexend Exa', cursive;
   object-fit: contain;
 }
 
 .todoContainer{
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  grid-gap:15px;
-  /* margin-top: 2.5%; */
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+  margin: 5px 30px 5px 30px;
  justify-content:space-evenly ;
   border-radius: 4px;
   margin: 2.5% auto; 
   padding: 0% 50%;
+  width: 25;
 }
 
 
-
 .veryHigh{
-    /* border: 5px solid white; */
-    border-radius: 8px;
-    width: 40vw;
-    height: auto;
-    background-color: rgba(22, 63, 87, .45)
+  
+  border-radius: 8px;
+  background-color: rgba(22, 63, 87, .45);
+  width: 40vw;
+
 }
 .high{
     /* border: 5px solid black; */
@@ -127,8 +139,6 @@ a {
     width: 40vw;
     height: auto;
     background-color: rgba(22, 63, 87, .45)
-
-
 }
 .low{
      /* border: 5px solid black; */
@@ -253,12 +263,6 @@ h3{
 
 
 
-
-
-
-
-
-
 html { 
   background: url(./bkg1.jpeg) no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -282,13 +286,9 @@ html {
 .weather
 {
 font-family: 'Lexend Exa', cursive;
-    color: white; 
-  font-size: 190%;
-
-  grid-column: 3;
-
-
-
+color: white; 
+font-size: 190%;
+grid-column: 3;
 
 }
 
@@ -361,13 +361,14 @@ padding: 5px, 10px, 5px, 10px;
 
 background-color: skyblue;
 cursor: pointer;
-
 }
 
 .delete-icon
 {
+align-content: center;
 cursor: pointer; 
-
+margin-left: auto;
+margin-right: auto;
 }
 
 .date
