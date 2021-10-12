@@ -80,38 +80,50 @@ a {
 .priorities{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, 75%);
+  grid-gap: 10px;
+  border-radius: 1px;
+  max-width: 400px;
+  list-style: none;
+  text-align: center;
+
+
+
+
 
 
 }
 .todoBox{
-  display: grid;
-  grid-template-columns: repeat(2,1fr); 
   grid-auto-rows: 45%;
-  grid-gap: 1px;
+
+  grid-gap: 10px;
   border: 1px solid white;
+  border-radius: 5px;
+
   font-family: 'Lexend Exa', cursive;
   object-fit: contain;
 }
 
 .todoContainer{
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  grid-gap:15px;
-  /* margin-top: 2.5%; */
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+  margin: 5px 30px 5px 30px;
  justify-content:space-evenly ;
   border-radius: 4px;
   margin: 2.5% auto; 
   padding: 0% 50%;
+  width: 25;
 }
 
 
-
 .veryHigh{
-    /* border: 5px solid white; */
-    border-radius: 8px;
-    width: 40vw;
-    height: auto;
-    background-color: rgba(22, 63, 87, .45)
+  
+  border-radius: 8px;
+  background-color: rgba(22, 63, 87, .45);
+  width: 40vw;
+
 }
 .high{
     /* border: 5px solid black; */
@@ -127,8 +139,6 @@ a {
     width: 40vw;
     height: auto;
     background-color: rgba(22, 63, 87, .45)
-
-
 }
 .low{
      /* border: 5px solid black; */
@@ -153,46 +163,67 @@ a {
 {
 background-color: rgba(22, 63, 87, .45);
 font-family: 'Lexend Exa', cursive;
-display: grid;
-grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-grid-template-columns: 1fr 2fr;
-gap: 10px;
+}
+.todoFormCSS{
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+  line-height: 125%;
 }
 .c11 {
-	grid-column: 1 / span 1;
-	grid-row: 1 / span 2;
+  /* border: 5px solid red; */
+	grid-column: 1/ span 2 ;
+	grid-row: 1 ;
+  margin-top: 25px;
 }
-.c21 {
-	grid-column: 2;
-	grid-row: 1;
-}
+
 .c12 {
+  /* border: 5px solid yellow; */
 	grid-column: 1;
 	grid-row: 2;
+  margin-top: 25px;
+
 }
 .c22 {
+  /* border: 5px solid blue; */
 	grid-column: 2;
 	grid-row: 2;
+  margin-left: 20px;
+  margin-top: 25px;
 }
 .c13 {
+  /* border: 5px solid purple; */
 	grid-column: 1;
 	grid-row: 3;
+  margin-top: 25px;
+
 }
 .c23 {
+  /* border: 5px solid black; */
 	grid-column: 2;
 	grid-row: 3;
+  margin-left: 20px;
+  margin-top: 25px;
 }
 .c14 {
+  /* border: 5px solid teal; */
 	grid-column: 1;
 	grid-row: 4;
+  margin-top: 25px;
 }
 .c24 {
+  /* border: 5px solid red; */
 	grid-column: 2;
 	grid-row: 4;
+  margin-left: 20px;
+  margin-top: 25px;
 }
 .c15 {
+  /* border: 5px solid red; */
 	grid-column: 1;
 	grid-row: 5;
+  margin-top: 25px;
 }
 button{
   /* background-color: rgba(22, 63, 87, 0);  */
@@ -232,12 +263,6 @@ h3{
 
 
 
-
-
-
-
-
-
 html { 
   background: url(./bkg1.jpeg) no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -261,13 +286,9 @@ html {
 .weather
 {
 font-family: 'Lexend Exa', cursive;
-    color: white; 
-  font-size: 190%;
-
-  grid-column: 3;
-
-
-
+color: white; 
+font-size: 190%;
+grid-column: 3;
 
 }
 
@@ -340,13 +361,14 @@ padding: 5px, 10px, 5px, 10px;
 
 background-color: skyblue;
 cursor: pointer;
-
 }
 
 .delete-icon
 {
+align-content: center;
 cursor: pointer; 
-
+margin-left: auto;
+margin-right: auto;
 }
 
 .date

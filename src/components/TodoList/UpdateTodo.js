@@ -118,8 +118,8 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 					id='dueDate'
 					value={todoText.dueDate}
 					onChange={handleChange}></input>
-				<label>User</label>
-				<input id='user' value={todoText.user} onChange={handleChange}></input>
+				{/* <label>User</label>
+				<input id='user' value={todoText.user} onChange={handleChange}></input> */}
 				<label>To Do</label>
 				<textarea
 					id='content'
