@@ -65,12 +65,11 @@ In the age of an attention economy, the personal organizer app provides an oasis
 - As a user, I want to see what time it is for the timezone of the users. (STRETCH GOAL).
 - As a user, I want to see who has posted, edited, and completed a task (STRETCH GOAL).
 
-## Contribution guidelines: 
+## Contribution guide lines: 
 
 Developers want to get involved? 
-You can help collaborate by creating your own personalized skin the in the css document. 
+You can help collaborate by crea ting your own personalized skin the in the css document. 
 Other ways to get involved include but are certainily not limited to creating your own organization tools as a component and linking it to the home page: Home.js. 
 Track issues here: 
 Main repo here: https://github.com/JSN-SEIR-809/project-3-frontend 
 Have any ideas for improvements? Enter them here!: 
-
