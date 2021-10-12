@@ -31,10 +31,7 @@ const AddTodo = ({ handleAddTodo, setTodos, count, setCount }) => {
        let arrPrior = ['Very High','High','Medium','Low']
 	   if(arrPrior.includes(todoText.priority))
       {
-
-		// if (todoText.length > 0) {
-			handleAddTodo(todoText);
-		// 	setTodoText(initialState);
+		handleAddTodo(todoText);
 		console.log(todoText);
 		axios.post(`https://safe-springs-78643.herokuapp.com/api/todos`, {
 			date: new Date().toLocaleDateString(),
@@ -96,9 +93,10 @@ const AddTodo = ({ handleAddTodo, setTodos, count, setCount }) => {
 				</select>
 				{/* <span className= "">completed: false</span> */}
 				<div className='note-footer'>
-					<button type='submit'>Save</button>
 				</div>
+				<button type='submit'>Save</button>
 			</form>
+				
 		</div>
 	);
 };

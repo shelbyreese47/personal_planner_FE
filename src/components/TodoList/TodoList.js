@@ -60,13 +60,13 @@ const TodoList = ({setCount, count}) => {
 	const completeTodo = (todo) => {
 		todo.preventDefault();
 		console.log(todo)
-		let id = todo.target.id;
+		// let id = todo.target.id;
 
-		axios.put(`https://safe-springs-78643.herokuapp.com/api/todos/${id}`, {
-				completed: completed === false ? true : false,
+		axios.put(`https://safe-springs-78643.herokuapp.com/api/todos/${todo.target.id}`, {
+		completed: true
 			})
 		
-			axios
+			.then(axios
 			.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
 			.then((response) => {
 				setTodos(response.data);
@@ -74,7 +74,27 @@ const TodoList = ({setCount, count}) => {
 			})
 			.catch((err) => {
 				console.log(err);
+			}))
+		
+	}
+		const uncompleteTodo = (todo) => {
+		todo.preventDefault();
+		console.log(todo)
+		// let id = todo.target.id;
+
+		axios.put(`https://safe-springs-78643.herokuapp.com/api/todos/${todo.target.id}`, {
+		completed: false
 			})
+		
+			.then(axios
+			.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
+			.then((response) => {
+				setTodos(response.data);
+				setCount(!count);
+			})
+			.catch((err) => {
+				console.log(err);
+			}))
 		
 	}
 		
@@ -119,24 +139,22 @@ const TodoList = ({setCount, count}) => {
 						<li key={`${todo} - ${index}`}>
 							{todo.content}
 							<Link to={`/TodoList/${todo._id}`}>
-								<MdEdit className='update' />
+								<button className='update'> 📝 </button>
 							</Link>
-							<span>
-								<button
-									className='delete-icon'
-									id={todo._id}
-									onClick={deleteTodo}>
-									{' '}
-									DeleteForever
-								</button>
-							</span>
-							<span>
-								<MdOutlineDone
-									className='delete-icon'
-									id={todo._id}
-									onClick={completeTodo}
-								/>
-							</span>
+
+							<button
+								className='delete-icon'
+								id={todo._id}
+								onClick={deleteTodo}>
+								 ❌
+							</button>
+							<button
+								className='delete-icon'
+								id={todo._id}
+								onClick={completeTodo}>
+								{/* ✅ */}
+							complete
+							</button>
 						</li>
 					))}
 				</ul>
@@ -148,22 +166,22 @@ const TodoList = ({setCount, count}) => {
 						<li key={`${todo} - ${index}`}>
 							{todo.content}
 							<Link to={`/TodoList/${todo._id}`}>
-								<MdEdit className='update' />
+								<button className='update'> 📝 </button>
 							</Link>
 
 							<button
 								className='delete-icon'
 								id={todo._id}
 								onClick={deleteTodo}>
-								{' '}
-								DeleteForever
+								 ❌
 							</button>
-
-							<MdOutlineDone
+							<button
 								className='delete-icon'
 								id={todo._id}
-								onClick={completeTodo}
-							/>
+								onClick={completeTodo}>
+								{' '}
+								✅{' '}
+							</button>
 						</li>
 					))}
 				</ul>
@@ -175,22 +193,22 @@ const TodoList = ({setCount, count}) => {
 						<li key={`${todo} - ${index}`}>
 							{todo.content}
 							<Link to={`/TodoList/${todo._id}`}>
-								<MdEdit className='update' />
+								<button className='update'> 📝 </button>
 							</Link>
 
 							<button
 								className='delete-icon'
 								id={todo._id}
 								onClick={deleteTodo}>
-								{' '}
-								DeleteForever
+								 ❌
 							</button>
-
-							<MdOutlineDone
+							<button
 								className='delete-icon'
 								id={todo._id}
-								onClick={completeTodo}
-							/>
+								onClick={completeTodo}>
+								{' '}
+								✅{' '}
+							</button>
 						</li>
 					))}
 				</ul>
@@ -202,22 +220,21 @@ const TodoList = ({setCount, count}) => {
 						<li key={`${todo} - ${index}`}>
 							{todo.content}
 							<Link to={`/TodoList/${todo._id}`}>
-								<MdEdit className='update' />
+								<button className='update'> 📝 </button>
 							</Link>
-
 							<button
 								className='delete-icon'
 								id={todo._id}
 								onClick={deleteTodo}>
-								{' '}
-								DeleteForever
+								 ❌
 							</button>
-
-							<MdOutlineDone
+							<button
 								className='delete-icon'
 								id={todo._id}
-								onClick={completeTodo}
-							/>
+								onClick={completeTodo}>
+								{' '}
+								✅{' '}
+							</button>
 						</li>
 					))}
 				</ul>
@@ -228,17 +245,16 @@ const TodoList = ({setCount, count}) => {
 					{completed.map((todo, index) => (
 						<li key={`${todo} - ${index}`}>
 							{todo.content}
-							<MdUndo
+							
+							<button
 								className='delete-icon'
-								id={todo._id}
-								onClick={completeTodo}
-							/>
+								id={todo._id} onClick={uncompleteTodo}>⏮</button>
+								
 							<button
 								className='delete-icon'
 								id={todo._id}
 								onClick={deleteTodo}>
-								{' '}
-								DeleteForever
+								 ❌
 							</button>
 						</li>
 					))}
