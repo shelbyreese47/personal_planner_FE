@@ -17,7 +17,7 @@ const TodoList = ({setCount, count}) => {
 	const url = 'https://safe-springs-78643.herokuapp.com/api/todos';
 
 	const handleAddTodo = (todo) => {
-		setCount([...count, '']);
+		setCount(!count);
 
 	};
 	// const updateTodo = async (event) => {
@@ -37,25 +37,28 @@ const TodoList = ({setCount, count}) => {
 	// const id = todos._id;
 	// console.log(id);
 
-	const deleteTodo = async (event) => {
-		console.log(event.target.id);
+	const deleteTodo = (event) => {
+		event.preventDefault();
+		console.log(event.target);
 
-		await axios.delete(
+		axios.delete(
 			`https://safe-springs-78643.herokuapp.com/api/todos/${event.target.id}`
-		);
+		).then(() => setCount(!count))
 
-		axios
-			.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
-			.then((response) => {
-				setTodos(response.data);
-				setCount([...count, '']);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		// .then( axios
+		// 	.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
+		// 	.then((response) => {
+		// 		setTodos(response.data);
+		// 		setCount([...count, '']);
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log(err);
+		// 	}))
 	};
 
+	
 	const completeTodo = (todo) => {
+		todo.preventDefault();
 		console.log(todo)
 		let id = todo.target.id;
 
@@ -67,7 +70,7 @@ const TodoList = ({setCount, count}) => {
 			.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
 			.then((response) => {
 				setTodos(response.data);
-				setCount([...count, '']);
+				setCount(!count);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -102,7 +105,9 @@ const TodoList = ({setCount, count}) => {
 	let lowP = todos.filter(
 		(todo) => todo.priority === 'Low' && todo.completed === false
 	);
-	let completed = todos.filter((todo) => todo.completed === true);
+	let completed = todos.filter(
+		(todo) => todo.completed === true
+		);
 
 	return (
 		<div className='todoContainer'>
@@ -117,11 +122,13 @@ const TodoList = ({setCount, count}) => {
 								<MdEdit className='update' />
 							</Link>
 							<span>
-								<MdDeleteForever
+								<button
 									className='delete-icon'
 									id={todo._id}
-									onClick={deleteTodo}
-								/>
+									onClick={deleteTodo}>
+									{' '}
+									DeleteForever
+								</button>
 							</span>
 							<span>
 								<MdOutlineDone
@@ -144,11 +151,13 @@ const TodoList = ({setCount, count}) => {
 								<MdEdit className='update' />
 							</Link>
 
-							<MdDeleteForever
+							<button
 								className='delete-icon'
 								id={todo._id}
-								onClick={deleteTodo}
-							/>
+								onClick={deleteTodo}>
+								{' '}
+								DeleteForever
+							</button>
 
 							<MdOutlineDone
 								className='delete-icon'
@@ -169,11 +178,13 @@ const TodoList = ({setCount, count}) => {
 								<MdEdit className='update' />
 							</Link>
 
-							<MdDeleteForever
+							<button
 								className='delete-icon'
 								id={todo._id}
-								onClick={deleteTodo}
-							/>
+								onClick={deleteTodo}>
+								{' '}
+								DeleteForever
+							</button>
 
 							<MdOutlineDone
 								className='delete-icon'
@@ -194,11 +205,13 @@ const TodoList = ({setCount, count}) => {
 								<MdEdit className='update' />
 							</Link>
 
-							<MdDeleteForever
+							<button
 								className='delete-icon'
 								id={todo._id}
-								onClick={deleteTodo}
-							/>
+								onClick={deleteTodo}>
+								{' '}
+								DeleteForever
+							</button>
 
 							<MdOutlineDone
 								className='delete-icon'
@@ -220,12 +233,13 @@ const TodoList = ({setCount, count}) => {
 								id={todo._id}
 								onClick={completeTodo}
 							/>
-							<MdDeleteForever
+							<button
 								className='delete-icon'
 								id={todo._id}
-								onClick={deleteTodo}
-							/>
-
+								onClick={deleteTodo}>
+								{' '}
+								DeleteForever
+							</button>
 						</li>
 					))}
 				</ul>

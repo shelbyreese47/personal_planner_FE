@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 
 
 // const axios = require('axios').default;
-const AddTodo = ({ handleAddTodo, setTodos }) => {
+const AddTodo = ({ handleAddTodo, setTodos, count, setCount }) => {
 	let initialState = {
 		date: '',
 		dueDate: '',
@@ -21,12 +21,13 @@ const AddTodo = ({ handleAddTodo, setTodos }) => {
 
 	const handleChange = (event) => {
 		// setTodoText(event.target.value);
+
 		setTodoText({ ...todoText, [event.target.id]: event.target.value });
 	};
 
 
-	const handleSaveClick = () => {
-
+	const handleSaveClick = (event) => {
+		event.preventDefault();
        let arrPrior = ['Very High','High','Medium','Low']
 	   if(arrPrior.includes(todoText.priority))
       {
@@ -42,16 +43,17 @@ const AddTodo = ({ handleAddTodo, setTodos }) => {
 			content: todoText.content,
 			priority: todoText.priority,
 			completed: todoText.completed,
-		});
-	  }
-		setTodoText(initialState);
-		axios.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
+		})
+		.then(setTodoText(initialState))
+		.then(axios.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
 		.then(response => { 
 			setTodos(response.data)
 		}).catch((err) => {
 			console.log(err)
-		})
+		}))
 		// submitForm();
+		// .then(setCount(!count));
+	}
 		
 }
 
@@ -59,10 +61,8 @@ const AddTodo = ({ handleAddTodo, setTodos }) => {
 
 
 	return (
-
-
 		<div className='note new'>
-			<form className= "addTodo">
+			<form className='addTodo' onSubmit ={handleSaveClick}>
 				<label>Today's Date:</label>
 				<p id='date'>{new Date().toLocaleDateString()}</p>
 				<label>Due Date</label>
@@ -81,20 +81,24 @@ const AddTodo = ({ handleAddTodo, setTodos }) => {
 					value={todoText.content}
 					onChange={handleChange}></textarea>
 				<label>Priority</label>
-				<select required id='priority' value={todoText.priority} onChange={handleChange}>
-					<option value="Click here to select priority" >Click here to select priority</option>
+				<select
+					required
+					id='priority'
+					value={todoText.priority}
+					onChange={handleChange}>
+					<option value='Click here to select priority'>
+						Click here to select priority
+					</option>
 					<option value='Very High'>Very High Priority</option>
 					<option value='High'>High Priority</option>
 					<option value='Medium'>Medium Priority</option>
 					<option value='Low'>Low Priority</option>
 				</select>
 				{/* <span className= "">completed: false</span> */}
+				<div className='note-footer'>
+					<button type='submit'>Save</button>
+				</div>
 			</form>
-			<div className='note-footer'>
-				<button onClick={handleSaveClick}>
-					Save
-				</button>
-			</div>
 		</div>
 	);
 };

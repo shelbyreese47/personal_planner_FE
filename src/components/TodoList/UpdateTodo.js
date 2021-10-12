@@ -72,21 +72,22 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 				content: todoText.content,
 				priority: todoText.priority,
 				completed: todoText.completed,
-			});
-		}
-		setTodoText(initialState);
-		axios
+			})
+		
+
+		.then(setTodoText(initialState))
+		.then(axios
 			.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
 			.then((response) => {
 				setTodos(response.data);
 			})
 			.catch((err) => {
 				console.log(err);
-			});
+			}))
 
 		// submitForm();
-		history.goBack();
-	};
+		.then(history.goBack()) 
+	}};
 
 	//  axios.get('http://localhost:3000/gifs').then(response => {
 	// gets the initial data

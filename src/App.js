@@ -9,7 +9,7 @@ import UpdateTodo from './components/TodoList/UpdateTodo'
 
 
 function App() {
-const [count, setCount] = useState([]);
+const [count, setCount] = useState(true);
 
 
 
