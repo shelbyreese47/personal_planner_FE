@@ -71,6 +71,6 @@ Developers want to get involved?
 You can help collaborate by creating your own personalized skin the in the css document. 
 Other ways to get involved include but are certainily not limited to creating your own organization tools as a component and linking it to the home page: Home.js. 
 Track issues here: 
-Main repo here: 
+Main repo here: https://github.com/JSN-SEIR-809/project-3-frontend 
 Have any ideas for improvements? Enter them here!: 
 
