@@ -36,7 +36,7 @@ const AddTodo = ({ handleAddTodo, setTodos, count, setCount }) => {
 		axios.post(`https://safe-springs-78643.herokuapp.com/api/todos`, {
 			date: new Date().toLocaleDateString(),
 			dueDate: todoText.dueDate,
-			user: todoText.user,
+			// user: todoText.user,
 			content: todoText.content,
 			priority: todoText.priority,
 			completed: todoText.completed,
@@ -60,25 +60,30 @@ const AddTodo = ({ handleAddTodo, setTodos, count, setCount }) => {
 	return (
 		<div className='note new'>
 			<form className='addTodo' onSubmit ={handleSaveClick}>
-				<label>Today's Date:</label>
-				<p id='date'>{new Date().toLocaleDateString()}</p>
-				<label>Due Date</label>
+				<label className="c11">Today's Date:</label>
+				<p id='date' className="c21">{new Date().toLocaleDateString()}</p>
+				<label className="c12">Due Date</label>
 				<input
+					className="c22"
 					id='dueDate'
 					value={todoText.dueDate}
 					onChange={handleChange}></input>
-				<label>User</label>
-				<input id='user' value={todoText.user} onChange={handleChange}></input>
-				<label>To Do</label>
+				{/* <label>User</label> */}
+				{/* <input id='user' value={todoText.user} onChange={handleChange}></input> */}
+				
+				<label className="c13">To Do</label>
 				<textarea
+				className="c23"
 					id='content'
-					rows='8'
-					cols='10'
-					placeholder='type to add a note'
+					rows='1'
+					cols='30'
+					placeholder='type to add a new todo'
 					value={todoText.content}
 					onChange={handleChange}></textarea>
-				<label>Priority</label>
+					
+				<label className="c14">Priority</label>
 				<select
+					className="c24"
 					required
 					id='priority'
 					value={todoText.priority}
@@ -94,7 +99,7 @@ const AddTodo = ({ handleAddTodo, setTodos, count, setCount }) => {
 				{/* <span className= "">completed: false</span> */}
 				<div className='note-footer'>
 				</div>
-				<button type='submit'>Save</button>
+				<button className="c15" type='submit'>Save</button>
 			</form>
 				
 		</div>

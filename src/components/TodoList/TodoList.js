@@ -136,8 +136,10 @@ const TodoList = ({setCount, count}) => {
 				<ul className='priorities'>
 					{veryHighP.map((todo, index) => (
 						// console.log(todo)
-						<li key={`${todo} - ${index}`}>
-							{todo.content}
+
+						<li className='todoBox' key={`${todo} - ${index}`}>
+							<p className='dueDate'>Due: {todo.dueDate}</p>
+							<p>{todo.content}</p>
 							<Link to={`/TodoList/${todo._id}`}>
 								<button className='update'> 📝 </button>
 							</Link>
@@ -152,8 +154,8 @@ const TodoList = ({setCount, count}) => {
 								className='delete-icon'
 								id={todo._id}
 								onClick={completeTodo}>
-								{/* ✅ */}
-							complete
+								{' '}
+								✅{' '}
 							</button>
 						</li>
 					))}
@@ -163,8 +165,9 @@ const TodoList = ({setCount, count}) => {
 				<h3>High Priority</h3>
 				<ul className='priorities'>
 					{highP.map((todo, index) => (
-						<li key={`${todo} - ${index}`}>
-							{todo.content}
+						<li className='todoBox' key={`${todo} - ${index}`}>
+							<p className='dueDate'>Due: {todo.dueDate}</p>
+							<p>{todo.content}</p>
 							<Link to={`/TodoList/${todo._id}`}>
 								<button className='update'> 📝 </button>
 							</Link>
@@ -190,12 +193,11 @@ const TodoList = ({setCount, count}) => {
 				<h3>Medium Priority</h3>
 				<ul className='priorities'>
 					{mediumP.map((todo, index) => (
-						<li key={`${todo} - ${index}`}>
-							{todo.content}
+						<li className='todoBox' key={`${todo} - ${index}`}>
+							{todo.dueDate} {todo.content}
 							<Link to={`/TodoList/${todo._id}`}>
 								<button className='update'> 📝 </button>
 							</Link>
-
 							<button
 								className='delete-icon'
 								id={todo._id}
@@ -217,8 +219,8 @@ const TodoList = ({setCount, count}) => {
 				<h3>Low Priority</h3>
 				<ul className='priorities'>
 					{lowP.map((todo, index) => (
-						<li key={`${todo} - ${index}`}>
-							{todo.content}
+						<li className='todoBox' key={`${todo} - ${index}`}>
+							{todo.dueDate} {todo.content}
 							<Link to={`/TodoList/${todo._id}`}>
 								<button className='update'> 📝 </button>
 							</Link>
@@ -243,13 +245,17 @@ const TodoList = ({setCount, count}) => {
 				<h3>Completed</h3>
 				<ul className='priorities'>
 					{completed.map((todo, index) => (
-						<li key={`${todo} - ${index}`}>
-							{todo.content}
-							
+						<li className='todoBox' key={`${todo} - ${index}`}>
+							{todo.dueDate} {todo.content}
+							{/* <Link to={`/TodoList/${todo._id}`}>
+								<button className='update'> 📝 </button>
+							</Link> */}
 							<button
 								className='delete-icon'
-								id={todo._id} onClick={uncompleteTodo}>⏮</button>
-								
+								id={todo._id}
+								onClick={uncompleteTodo}>
+								⏪
+							</button>
 							<button
 								className='delete-icon'
 								id={todo._id}

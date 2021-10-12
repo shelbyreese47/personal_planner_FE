@@ -80,8 +80,19 @@ a {
 .priorities{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 18px;
-  
+
+
 }
+.todoBox{
+  display: grid;
+  grid-template-columns: repeat(2,1fr); 
+  grid-auto-rows: 45%;
+  grid-gap: 1px;
+  border: 1px solid white;
+  font-family: 'Lexend Exa', cursive;
+  object-fit: contain;
+}
+
 .todoContainer{
   display: grid;
   grid-template-columns: repeat(2,1fr);
@@ -89,52 +100,100 @@ a {
   /* margin-top: 2.5%; */
  justify-content:space-evenly ;
   border-radius: 4px;
-  margin: 2.5% auto;
+  margin: 2.5% auto; 
   padding: 0% 50%;
 }
 
 
 
 .veryHigh{
-      border: 5px solid black;
-    border-radius: 4px;
+    /* border: 5px solid white; */
+    border-radius: 8px;
     width: 40vw;
     height: auto;
-  background-color: rgba(109, 106, 106, 0.45);
-
+    background-color: rgba(22, 63, 87, .45)
 }
 .high{
-      border: 5px solid black;
-    border-radius: 4px;
+    /* border: 5px solid black; */
+    border-radius: 8px;
     width: 40vw;
     height: auto;
-    background-color: rgba(109, 106, 106, 0.45);
+   background-color: rgba(22, 63, 87, .45)
 }
 
 .medium{
-    border: 5px solid black;
-    border-radius: 4px;
+    /* border: 5px solid black; */
+    border-radius: 8px;
     width: 40vw;
     height: auto;
-    background-color: rgba(109, 106, 106, 0.45);
+    background-color: rgba(22, 63, 87, .45)
 
 
 }
 .low{
-     border: 5px solid black;
-    border-radius: 4px;
+     /* border: 5px solid black; */
+    border-radius: 8px;
     width: 40vw;
     height: auto;
-    background-color: rgba(109, 106, 106, 0.45);
+    background-color: rgba(22, 63, 87, .45)
 }
 .completed{
-    border: 5px solid black;
+    /* border: 5px solid black; */
     border-radius: 4px;
     width: 40vw;
     height: auto;
-    background-color: rgba(109, 106, 106, 0.45);
+    background-color: rgba(22, 63, 87, .45)
 }
 
+.addTo {
+  background-color: black;
+}
+
+.note.new
+{
+background-color: rgba(22, 63, 87, .45);
+font-family: 'Lexend Exa', cursive;
+display: grid;
+grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+grid-template-columns: 1fr 2fr;
+gap: 10px;
+}
+.c11 {
+	grid-column: 1 / span 1;
+	grid-row: 1 / span 2;
+}
+.c21 {
+	grid-column: 2;
+	grid-row: 1;
+}
+.c12 {
+	grid-column: 1;
+	grid-row: 2;
+}
+.c22 {
+	grid-column: 2;
+	grid-row: 2;
+}
+.c13 {
+	grid-column: 1;
+	grid-row: 3;
+}
+.c23 {
+	grid-column: 2;
+	grid-row: 3;
+}
+.c14 {
+	grid-column: 1;
+	grid-row: 4;
+}
+.c24 {
+	grid-column: 2;
+	grid-row: 4;
+}
+.c15 {
+	grid-column: 1;
+	grid-row: 5;
+}
 button{
   /* background-color: rgba(22, 63, 87, 0);  */
   background-color: rgba(0, 0, 0, 0.0);
@@ -256,13 +315,7 @@ font-family: 'Oswald', cursive;
 
 }
 
-.note.new
-{
-background-color: #8aadc5 ;
-font-family: 'Lexend Exa', cursive;
 
-
-}
 
 textarea{
   background-color: whitesmoke;
