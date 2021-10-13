@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { render } from 'react-dom';
 import { useParams, useHistory } from 'react-router-dom';
-import TodoList from './TodoList';
 
-
-// const axios = require('axios').default;
 const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 	let initialState = {
 		date: '',
@@ -20,25 +16,12 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 	
 	const { id } = useParams();
 	const history = useHistory();
-	console.log(id);
+	
 	
 	const [todoText, setTodoText] = useState(initialState);
 	
 	const handleAddTodo = (todo) => {
-		// const date = new Date();
-		// const newTodo = {
-		// 	text: text,
-		// 	date: date.toLocaleDateString(),
-		// };
-	
-		// const newTodos = [...todos, newTodo];
-		// setTodos(...todo);
-		// setCount( count ? 0 : 1)
 		setCount(!count);
-		// count++;
-	
-		// setTodos([...todos, todo]);
-		//console.log(y);
 	};
 
 	useEffect(() => {
@@ -48,8 +31,9 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 				setTodoText(response.data);
 			})
 			.catch((err) => {
-			
+				console.log(err);
 			});
+		//eslint-disable-next-line
 	}, []);
 
 	const handleChange = (event) => {
@@ -60,11 +44,8 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 	const handleSaveClick = () => {
 		let arrPrior = ['Very High', 'High', 'Medium', 'Low'];
 		if (arrPrior.includes(todoText.priority)) {
-			// if (todoText.length > 0) {
 			handleAddTodo(todoText);
-			
-			// 	setTodoText(initialState);
-			
+	
 			axios.put(`https://safe-springs-78643.herokuapp.com/api/todos/${id}`, {
 				date: new Date().toLocaleDateString(),
 				dueDate: todoText.dueDate,
@@ -85,30 +66,10 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 				
 			}))
 
-		// submitForm();
 		.then(history.push('/TodoList')) 
-		// <TodoList />
-		// <Link className="TodoList" to='/TodoList'>Todo List </Link>
-
-
 
 	}};
-
-	//  axios.get('http://localhost:3000/gifs').then(response => {
-	// gets the initial data
-	//   addPictures(response.data)
-	// })
-
 	return (
-		// "_id": "615f15dec218e49e354c5365",
-		// "date": "10/6/2021",
-		// "dueDate": "11/1/2021",
-		// "user": "Pusheen",
-		// "content": "It's a me, Pusheen!",
-		// "priority": "High",
-		// "completed": false,
-		// "__v": 0
-
 		<div className='todoNew updateTodoForm todoFormCSS'>
 			<form className="addTodo">
 				<label className='c11' id='date'>
@@ -121,8 +82,6 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 					value={todoText.dueDate}
 					onChange={handleChange}
 					className='c22'></input>
-				{/* <label>User</label>
-				<input id='user' value={todoText.user} onChange={handleChange}></input> */}
 				<br />
 				<label className='c13'>To Do</label>
 				<input
@@ -147,12 +106,9 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 					<option value='Medium'>Medium Priority</option>
 					<option value='Low'>Low Priority</option>
 				</select>
-				{/* <div className='note-footer'> */}
-					{/* <span className= "">completed: false</span> */}
 					<button className='c15' onClick={handleSaveClick}>
 						☑︎
 					</button>
-				{/* </div> */}
 			</form>
 		</div>
 	);

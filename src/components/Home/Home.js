@@ -9,57 +9,44 @@ const Home = () => {
 	const [quoteClick, setQuoteClick] = useState(true);
 	const [index, setIndex] = useState(0);
 
-const [userCity, setUserCity]  = useState('Boston');
+	const [userCity, setUserCity] = useState('Boston');
 
 	const handleChange = (event) => {
 		event.preventDefault();
 		setUserCity(event.target.value);
-
-
 	};
-		const handleSubmit = (event) => {
+	const handleSubmit = (event) => {
 		event.preventDefault();
 		setClick(!click);
-	}
+	};
 
 	let url = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=5ecef11cefb74010e2528b942ae24f55&units=imperial`;
-	
+
 	useEffect(() => {
 		fetch(url)
 			.then((res) => res.json())
 			.then((json) => {
-				
 				setHome(json);
-				
 			})
 
-			.catch(console.error)
-			
+			.catch(console.error);
 	}, [click]);
-	
-
-	
-
 
 	useEffect(() => {
-		
 		fetch('https://type.fit/api/quotes')
 			.then((res) => res.json())
 			.then((json) => {
 				setQuote(json);
 				setQuoteClick(false);
-				setIndex(Math.floor(Math.random() * 1644))
+				setIndex(Math.floor(Math.random() * 1644));
 			});
 	}, [quoteClick]);
 
-
 	if (!home) {
 		return <h1>Loading</h1>;
-		//empty objects are not falsey. state must be empty for this to happen. ^^^^^
 	}
 	if (!quote) {
 		return <h1>Loading</h1>;
-		//empty objects are not falsey. state must be empty for this to happen. ^^^^^
 	}
 
 	return (
@@ -88,9 +75,6 @@ const [userCity, setUserCity]  = useState('Boston');
 			<p className='todaysDate'>
 				Today's Date: {new Date().toLocaleDateString()}
 			</p>
-
-			{/* <h1 className='welcome'>WELCOME JOY!</h1> */}
-
 			<div className='quote'>
 				<h2>{quote[index].text}</h2>
 				<h2> - {quote[index].author}</h2>

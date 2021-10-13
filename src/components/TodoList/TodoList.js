@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
-// import Link from 'react-router-dom';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AddTodo from './AddTodo';
 import axios from 'axios';
-import { MdDeleteForever, MdOutlineDone, MdEdit, MdUndo } from 'react-icons/md';
 
 const TodoList = ({ setCount, count }) => {
 	const [todos, setTodos] = useState([]);
-	// const [count, setCount] = useState([]);
 
 	const url = 'https://safe-springs-78643.herokuapp.com/api/todos';
 
@@ -17,7 +14,7 @@ const TodoList = ({ setCount, count }) => {
 
 	const deleteTodo = (event) => {
 		event.preventDefault();
-		console.log(event.target);
+		
 
 		axios
 			.delete(
@@ -46,14 +43,13 @@ const TodoList = ({ setCount, count }) => {
 						setCount(!count);
 					})
 					.catch((err) => {
-						console.log(err);
+						console.log(err)
 					})
 			);
 	};
 	const uncompleteTodo = (todo) => {
 		todo.preventDefault();
-		console.log(todo);
-		// let id = todo.target.id;
+
 
 		axios
 			.put(
@@ -81,7 +77,6 @@ const TodoList = ({ setCount, count }) => {
 			fetch(url)
 				.then((res) => res.json())
 				.then((json) => {
-					console.log(json);
 					setTodos(json);
 				})
 				.catch((err) => console.log(err));
@@ -109,7 +104,7 @@ const TodoList = ({ setCount, count }) => {
 				<h3>Very High Priority</h3>
 				<ul className='priorities'>
 					{veryHighP.map((todo, index) => (
-						// console.log(todo)
+						
 
 						<li className='todoBox' key={`${todo} - ${index}`}>
 							<p className='dueDate'>Due: {todo.dueDate}</p>

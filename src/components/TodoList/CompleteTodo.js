@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { render } from 'react-dom';
 import { useParams, useHistory } from 'react-router-dom';
-import TodoList from './TodoList';
 
-// const axios = require('axios').default;
 const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 	let initialState = {
 		date: '',
@@ -17,7 +14,6 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 
 	const { id } = useParams();
 	const history = useHistory();
-	console.log(id);
 
 	const [todoText, setTodoText] = useState(initialState);
 
@@ -60,23 +56,8 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 		history.goBack();
 	};
 
-	//  axios.get('http://localhost:3000/gifs').then(response => {
-	// gets the initial data
-	//   addPictures(response.data)
-	// })
-
 	return (
-		// "_id": "615f15dec218e49e354c5365",
-		// "date": "10/6/2021",
-		// "dueDate": "11/1/2021",
-		// "user": "Pusheen",
-		// "content": "It's a me, Pusheen!",
-		// "priority": "High",
-		// "completed": false,
-		// "__v": 0
-
-		// <div className='note new'>
-			<div className='todoNew'>
+		<div className='todoNew'>
 			<form>
 				<label>Today's Date:</label>
 				<p id='date'>{new Date().toLocaleDateString()}</p>
@@ -109,7 +90,6 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 					<option value='Medium'>Medium Priority</option>
 					<option value='Low'>Low Priority</option>
 				</select>
-				{/* <span className= "">completed: false</span> */}
 			</form>
 			<div className='note-footer'>
 				<button onClick={handleSaveClick}>Save</button>

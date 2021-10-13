@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import axios  from 'axios';
-import { render } from 'react-dom';
 
-
-// const axios = require('axios').default;
 const AddTodo = ({ handleAddTodo, setTodos, count, setCount }) => {
 	let initialState = {
 		date: '',
@@ -20,8 +17,6 @@ const AddTodo = ({ handleAddTodo, setTodos, count, setCount }) => {
 
 
 	const handleChange = (event) => {
-		// setTodoText(event.target.value);
-
 		setTodoText({ ...todoText, [event.target.id]: event.target.value });
 	};
 
@@ -32,7 +27,7 @@ const AddTodo = ({ handleAddTodo, setTodos, count, setCount }) => {
 	   if(arrPrior.includes(todoText.priority))
       {
 		handleAddTodo(todoText);
-		console.log(todoText);
+	
 		axios.post(`https://safe-springs-78643.herokuapp.com/api/todos`, {
 			date: new Date().toLocaleDateString(),
 			dueDate: todoText.dueDate,
@@ -48,14 +43,10 @@ const AddTodo = ({ handleAddTodo, setTodos, count, setCount }) => {
 		}).catch((err) => {
 			console.log(err)
 		}))
-		// submitForm();
-		// .then(setCount(!count));
+
 	}
 		
 }
-
-
-
 
 	return (
 		<div className='todoNew todoFormCSS'>
@@ -68,8 +59,6 @@ const AddTodo = ({ handleAddTodo, setTodos, count, setCount }) => {
 					placeholder="type to add due date"
 					value={todoText.dueDate}
 					onChange={handleChange}></input>
-				{/* <label>User</label> */}
-				{/* <input id='user' value={todoText.user} onChange={handleChange}></input> */}
 				<br/>
 				<label className="c13">To Do</label>
 				<input
@@ -94,7 +83,6 @@ const AddTodo = ({ handleAddTodo, setTodos, count, setCount }) => {
 					<option value='Medium'>Medium Priority</option>
 					<option value='Low'>Low Priority</option>
 				</select>
-				{/* <span className= "">completed: false</span> */}
 				<div className='note-footer'>
 				</div>
 				<button className="c15" type='submit'>☑︎</button>
