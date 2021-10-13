@@ -37,7 +37,7 @@ align-content: space-between;
 grid-template-rows: 1fr,2fr, 1fr;
 /* grid-auto-rows: minmax(100px, auto); */
 grid-template-columns: 1fr, 1fr, 1fr; 
-
+margin:1rem;
 }
 
 
@@ -202,7 +202,7 @@ font-family: 'Lexend Exa', cursive;
 	grid-row: 2;
   margin-top: 1.5rem;
   font-family: 'Lexend Exa', cursive;
-  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+
  
 
 }
@@ -216,6 +216,7 @@ font-family: 'Lexend Exa', cursive;
 	grid-row: 2;
   margin-left: 1.3rem;
   margin-top: 1.5rem;
+  padding: .2rem;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .c13 {
@@ -223,6 +224,7 @@ font-family: 'Lexend Exa', cursive;
 	grid-column: 1;
 	grid-row: 3;
   margin-top: 1.5rem;
+
 
 }
 .c23 {
@@ -235,6 +237,8 @@ font-family: 'Lexend Exa', cursive;
 	grid-row: 3;
   margin-left: 1.3rem;
   margin-top: 1.5rem;
+  padding: .2rem;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .c14 {
   /* border: 5px solid teal; */
@@ -253,6 +257,7 @@ font-family: 'Lexend Exa', cursive;
   border: none;
   padding: .2rem;
   color:white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 

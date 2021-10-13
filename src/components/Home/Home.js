@@ -6,14 +6,22 @@ const Home = () => {
 	const [home, setHome] = useState();
 	const [quote, setQuote] = useState();
 
+// const Boston = 'Boston'; 
+const [userCity, setUserCity]  = useState('Boston');
 
+	const handleChange = (event) => {
+		// setTodoText(event.target.value);
+
+		setUserCity({ ...userCity, [event.target.id]: event.target.value });
+	};
 
 	useEffect(() => {
 		fetch(
-			`https://api.openweathermap.org/data/2.5/weather?q=Boston&appid=5ecef11cefb74010e2528b942ae24f55&units=imperial`
+			`https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=5ecef11cefb74010e2528b942ae24f55&units=imperial`
 		)
 			.then((res) => res.json())
 			.then((json) => {
+				console.log(json);
 				setHome(json);
 			})
 
@@ -54,7 +62,9 @@ const Home = () => {
 
 			<div className='weatherstatus'>{home.weather[0].description}  </div>
 			<div className='location'>
-				<h4>Boston</h4>
+				{/* <h4>{home.weather[0]}</h4> */}
+				<input type="text" placeholder="enter city" onChange={handleChange} value="userCity"/> 
+				<button type="submit">✓</button>
 			</div>
 
 			<div className='time'>
