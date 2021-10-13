@@ -27,7 +27,7 @@ const [noteText, setNoteText] = useState('');
     return (
         <div className = 'note new'>
             <textarea
-
+            className="textBoxNote"
             rows = '8'
             cols = '10'
             placeholder ='type to add a note '

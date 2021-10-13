@@ -5,45 +5,48 @@ import Clock from '../Clock';
 const Home = () => {
 	const [home, setHome] = useState();
 	const [quote, setQuote] = useState();
+	const [click, setClick] = useState(false);
+	const [quoteClick, setQuoteClick] = useState(true);
+	const [index, setIndex] = useState(0);
 
+	const [userCity, setUserCity] = useState('Boston');
 
+	const handleChange = (event) => {
+		event.preventDefault();
+		setUserCity(event.target.value);
+	};
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		setClick(!click);
+	};
+
+	let url = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=5ecef11cefb74010e2528b942ae24f55&units=imperial`;
 
 	useEffect(() => {
-		fetch(
-			`https://api.openweathermap.org/data/2.5/weather?q=Boston&appid=5ecef11cefb74010e2528b942ae24f55&units=imperial`
-		)
+		fetch(url)
 			.then((res) => res.json())
 			.then((json) => {
 				setHome(json);
 			})
 
 			.catch(console.error);
-	}, []);
-
-	let index = Math.floor(Math.random() * 1644);
-
+	}, [click]);
 
 	useEffect(() => {
 		fetch('https://type.fit/api/quotes')
 			.then((res) => res.json())
 			.then((json) => {
 				setQuote(json);
+				setQuoteClick(false);
+				setIndex(Math.floor(Math.random() * 1644));
 			});
-	}, []);
-
-	// .catch(console.error);
-
-	// console.log(quote[index].text);
-
-	// 	}, []);
+	}, [quoteClick]);
 
 	if (!home) {
 		return <h1>Loading</h1>;
-		//empty objects are not falsey. state must be empty for this to happen. ^^^^^
 	}
 	if (!quote) {
 		return <h1>Loading</h1>;
-		//empty objects are not falsey. state must be empty for this to happen. ^^^^^
 	}
 
 	return (
@@ -52,19 +55,26 @@ const Home = () => {
 				<h1>{home.main.temp}°</h1>
 			</div>
 
-			<div className='weatherstatus'>
-				{home.weather[0].description}  
-			</div>
-			<div className='location'>
-				<h4>Boston</h4>
-			</div>
+			<div className='weatherstatus'>{home.weather[0].description}  </div>
+			<form className='location' onSubmit={handleSubmit}>
+				<h4>{home.name}</h4>
+				<input
+					className='c27'
+					type='text'
+					placeholder='enter city'
+					onChange={handleChange}
+				/>
+				<button className='weather-icon' type='submit'>
+					✓
+				</button>
+			</form>
 
 			<div className='time'>
 				<Clock />
 			</div>
-
-			{/* <h1 className='welcome'>WELCOME JOY!</h1> */}
-
+			<p className='todaysDate'>
+				Today's Date: {new Date().toLocaleDateString()}
+			</p>
 			<div className='quote'>
 				<h2>{quote[index].text}</h2>
 				<h2> - {quote[index].author}</h2>
