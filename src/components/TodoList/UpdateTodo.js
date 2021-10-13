@@ -48,7 +48,7 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 				setTodoText(response.data);
 			})
 			.catch((err) => {
-				console.log(err);
+			
 			});
 	}, []);
 
@@ -64,7 +64,7 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 			handleAddTodo(todoText);
 			
 			// 	setTodoText(initialState);
-			console.log(todoText);
+			
 			axios.put(`https://safe-springs-78643.herokuapp.com/api/todos/${id}`, {
 				date: new Date().toLocaleDateString(),
 				dueDate: todoText.dueDate,
@@ -82,7 +82,7 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 				setTodos(response.data);
 			})
 			.catch((err) => {
-				console.log(err);
+				
 			}))
 
 		// submitForm();

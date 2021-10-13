@@ -14,21 +14,6 @@ const TodoList = ({ setCount, count }) => {
 	const handleAddTodo = (todo) => {
 		setCount(!count);
 	};
-	// const updateTodo = async (event) => {
-	// 	console.log(event.target.id);
-
-	// 	axios
-	// 		.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
-	// 		.then((response) => {
-	// 			setTodos(response.data);
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log(err);
-	// 		});
-	// };
-
-	// const id = todos._id;
-	// console.log(id);
 
 	const deleteTodo = (event) => {
 		event.preventDefault();
@@ -40,21 +25,10 @@ const TodoList = ({ setCount, count }) => {
 			)
 			.then(() => setCount(!count));
 
-		// .then( axios
-		// 	.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
-		// 	.then((response) => {
-		// 		setTodos(response.data);
-		// 		setCount([...count, '']);
-		// 	})
-		// 	.catch((err) => {
-		// 		console.log(err);
-		// 	}))
 	};
 
 	const completeTodo = (todo) => {
 		todo.preventDefault();
-		console.log(todo);
-		// let id = todo.target.id;
 
 		axios
 			.put(

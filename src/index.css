@@ -289,6 +289,18 @@ button{
   
 }
 
+.c27 {
+  /* border: 5px solid blue; */
+  background-color: rgba(32, 46, 54, 0.4);
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  width: 300px;
+  margin-top: 1.5rem;
+  padding: .2rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .updateTodoForm {
  margin: 2rem auto;
 
@@ -432,6 +444,14 @@ margin-left: auto;
 margin-right: auto;
 }
 
+.weather-icon
+{
+align-content: center;
+cursor: pointer;
+margin-right: auto;
+size:500px;
+}
+
 .date
 {
   display: grid;
@@ -526,6 +546,15 @@ margin-right: auto;
      .todoFormCSS{
        margin-top: 1rem;
        width: 85vw;
+     }
+
+     .location{
+  border: none;
+  resize: none;
+  outline:none; 
+
+
+
      }
 
 

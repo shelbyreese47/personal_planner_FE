@@ -5,45 +5,53 @@ import Clock from '../Clock';
 const Home = () => {
 	const [home, setHome] = useState();
 	const [quote, setQuote] = useState();
+	const [click, setClick] = useState(false);
+	const [quoteClick, setQuoteClick] = useState(true);
+	const [index, setIndex] = useState(0);
 
-// const Boston = 'Boston'; 
 const [userCity, setUserCity]  = useState('Boston');
 
 	const handleChange = (event) => {
-		// setTodoText(event.target.value);
+		event.preventDefault();
+		setUserCity(event.target.value);
 
-		setUserCity({ ...userCity, [event.target.id]: event.target.value });
+
 	};
+		const handleSubmit = (event) => {
+		event.preventDefault();
+		setClick(!click);
+	}
 
+	let url = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=5ecef11cefb74010e2528b942ae24f55&units=imperial`;
+	
 	useEffect(() => {
-		fetch(
-			`https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=5ecef11cefb74010e2528b942ae24f55&units=imperial`
-		)
+		fetch(url)
 			.then((res) => res.json())
 			.then((json) => {
-				console.log(json);
+				
 				setHome(json);
+				
 			})
 
-			.catch(console.error);
-	}, []);
+			.catch(console.error)
+			
+	}, [click]);
+	
 
-	let index = Math.floor(Math.random() * 1644);
+	
 
 
 	useEffect(() => {
+		
 		fetch('https://type.fit/api/quotes')
 			.then((res) => res.json())
 			.then((json) => {
 				setQuote(json);
+				setQuoteClick(false);
+				setIndex(Math.floor(Math.random() * 1644))
 			});
-	}, []);
+	}, [quoteClick]);
 
-	// .catch(console.error);
-
-	// console.log(quote[index].text);
-
-	// 	}, []);
 
 	if (!home) {
 		return <h1>Loading</h1>;
@@ -61,16 +69,25 @@ const [userCity, setUserCity]  = useState('Boston');
 			</div>
 
 			<div className='weatherstatus'>{home.weather[0].description}  </div>
-			<div className='location'>
-				{/* <h4>{home.weather[0]}</h4> */}
-				<input type="text" placeholder="enter city" onChange={handleChange} value="userCity"/> 
-				<button type="submit">✓</button>
-			</div>
+			<form className='location' onSubmit={handleSubmit}>
+				<h4>{home.name}</h4>
+				<input
+					className='c27'
+					type='text'
+					placeholder='enter city'
+					onChange={handleChange}
+				/>
+				<button className='weather-icon' type='submit'>
+					✓
+				</button>
+			</form>
 
 			<div className='time'>
 				<Clock />
 			</div>
-				<p className="todaysDate">Today's Date: {new Date().toLocaleDateString()}</p>
+			<p className='todaysDate'>
+				Today's Date: {new Date().toLocaleDateString()}
+			</p>
 
 			{/* <h1 className='welcome'>WELCOME JOY!</h1> */}
 
