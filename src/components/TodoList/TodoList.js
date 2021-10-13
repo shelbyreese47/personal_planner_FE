@@ -143,20 +143,20 @@ const TodoList = ({ setCount, count }) => {
 							<br />
 							<span>
 								<Link to={`/TodoList/${todo._id}`}>
-									<button className='update'> 📝 </button>
+									<button className='update'> ✎ </button>
 								</Link>
 
 								<button
 									className='delete-icon'
 									id={todo._id}
 									onClick={deleteTodo}>
-									❌
+									x
 								</button>
 								<button
 									className='delete-icon'
 									id={todo._id}
 									onClick={completeTodo}>
-									✅
+									✓
 								</button>
 							</span>
 						</li>
@@ -174,20 +174,20 @@ const TodoList = ({ setCount, count }) => {
 							<br />
 							<span>
 								<Link to={`/TodoList/${todo._id}`}>
-									<button className='update'> 📝 </button>
+									<button className='update'> ✎  </button>
 								</Link>
 
 								<button
 									className='delete-icon'
 									id={todo._id}
 									onClick={deleteTodo}>
-									❌
+									x
 								</button>
 								<button
 									className='delete-icon'
 									id={todo._id}
 									onClick={completeTodo}>
-									✅
+									✓
 								</button>
 							</span>
 
@@ -206,20 +206,20 @@ const TodoList = ({ setCount, count }) => {
 							<br />
 							<span>
 								<Link to={`/TodoList/${todo._id}`}>
-									<button className='update'> 📝 </button>
+									<button className='update'> ✎ </button>
 								</Link>
 
 								<button
 									className='delete-icon'
 									id={todo._id}
 									onClick={deleteTodo}>
-									❌
+									x
 								</button>
 								<button
 									className='delete-icon'
 									id={todo._id}
 									onClick={completeTodo}>
-									✅
+									✓
 								</button>
 							</span>
 
@@ -238,20 +238,20 @@ const TodoList = ({ setCount, count }) => {
 							<br />
 							<span>
 								<Link to={`/TodoList/${todo._id}`}>
-									<button className='update'> 📝 </button>
+									<button className='update'> ✎ </button>
 								</Link>
 
 								<button
 									className='delete-icon'
 									id={todo._id}
 									onClick={deleteTodo}>
-									❌
+									x
 								</button>
 								<button
 									className='delete-icon'
 									id={todo._id}
 									onClick={completeTodo}>
-									✅
+									✓
 								</button>
 							</span>
 
@@ -270,20 +270,20 @@ const TodoList = ({ setCount, count }) => {
 							<br />
 							<span>
 								<Link to={`/TodoList/${todo._id}`}>
-									<button className='update'> 📝 </button>
+									<button className='update'> ✎ </button>
 								</Link>
 
 								<button
 									className='delete-icon'
 									id={todo._id}
 									onClick={deleteTodo}>
-									❌
+									x
 								</button>
 								<button
 									className='delete-icon'
 									id={todo._id}
 									onClick={uncompleteTodo}>
-									⏪
+									⏎
 								</button>
 							</span>
 

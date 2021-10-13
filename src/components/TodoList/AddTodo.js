@@ -58,27 +58,26 @@ const AddTodo = ({ handleAddTodo, setTodos, count, setCount }) => {
 
 
 	return (
-		<div className='note new todoFormCSS'>
+		<div className='todoNew todoFormCSS'>
 			<form className='addTodo' onSubmit ={handleSaveClick}>
 				<label className="c11"id='date'>Today's Date: {new Date().toLocaleDateString()}</label> <br/>
 				<label className="c12">Due Date</label>
 				<input
 					className="c22"
 					id='dueDate'
+					placeholder="type to add due date"
 					value={todoText.dueDate}
 					onChange={handleChange}></input>
 				{/* <label>User</label> */}
 				{/* <input id='user' value={todoText.user} onChange={handleChange}></input> */}
 				<br/>
 				<label className="c13">To Do</label>
-				<textarea
+				<input
 				className="c23"
 					id='content'
-					rows='1.25'
-					cols='30'
 					placeholder='type to add a new todo'
 					value={todoText.content}
-					onChange={handleChange}></textarea>
+					onChange={handleChange}></input>
 					<br/>
 				<label className="c14">Priority</label>
 				<select
@@ -98,7 +97,7 @@ const AddTodo = ({ handleAddTodo, setTodos, count, setCount }) => {
 				{/* <span className= "">completed: false</span> */}
 				<div className='note-footer'>
 				</div>
-				<button className="c15" type='submit'>Save</button>
+				<button className="c15" type='submit'>☑︎</button>
 			</form>
 				
 		</div>

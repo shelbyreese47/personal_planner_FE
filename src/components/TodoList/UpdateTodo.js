@@ -109,27 +109,32 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 		// "completed": false,
 		// "__v": 0
 
-		<div className='note new'>
-			<form>
-				<label>Today's Date:</label>
-				<p id='date'>{new Date().toLocaleDateString()}</p>
-				<label>Due Date</label>
+		<div className='todoNew updateTodoForm todoFormCSS'>
+			<form className="addTodo">
+				<label className='c11' id='date'>
+					Today's Date: {new Date().toLocaleDateString()}
+				</label>
+				<br />
+				<label className='c12'>Due Date</label>
 				<input
 					id='dueDate'
 					value={todoText.dueDate}
-					onChange={handleChange}></input>
+					onChange={handleChange}
+					className='c22'></input>
 				{/* <label>User</label>
 				<input id='user' value={todoText.user} onChange={handleChange}></input> */}
-				<label>To Do</label>
-				<textarea
+				<br />
+				<label className='c13'>To Do</label>
+				<input
 					id='content'
-					rows='8'
-					cols='10'
-					placeholder='type to add a note'
+					placeholder='type to edit a todo'
 					value={todoText.content}
-					onChange={handleChange}></textarea>
-				<label>Priority</label>
+					onChange={handleChange}
+					className='c23'></input>
+				<br />
+				<label className='c14'>Priority</label>
 				<select
+					className='c24'
 					required
 					id='priority'
 					value={todoText.priority}
@@ -142,10 +147,12 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 					<option value='Medium'>Medium Priority</option>
 					<option value='Low'>Low Priority</option>
 				</select>
-			<div className='note-footer'>
-				{/* <span className= "">completed: false</span> */}
-				<button onClick={handleSaveClick}>Save</button>
-			</div>
+				{/* <div className='note-footer'> */}
+					{/* <span className= "">completed: false</span> */}
+					<button className='c15' onClick={handleSaveClick}>
+						☑︎
+					</button>
+				{/* </div> */}
 			</form>
 		</div>
 	);

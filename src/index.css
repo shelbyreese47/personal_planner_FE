@@ -4,8 +4,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Lato&family=Lexend+Exa&family=Montserrat&family=Oswald&family=Plaster&family=Rock+Salt&family=Source+Sans+Pro&display=swap');
 
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wdth,wght@62.5,463&display=swap');
+
 body {
-  font-family: 'permanent marker', cursive;
+ font-family: 'Lexend Exa', cursive;
 
   margin: 0;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -29,28 +32,26 @@ font-family: 'Lexend Exa', sans-serif;
 display: grid
 height = 100%; 
 justify-items: stretch;
-grid-gap: 1px; 
+grid-gap: 1rem; 
 align-content: space-between;
 grid-template-rows: 1fr,2fr, 1fr;
 /* grid-auto-rows: minmax(100px, auto); */
 grid-template-columns: 1fr, 1fr, 1fr; 
-
-
-
-
 
 }
 
 
 
 .menu
-{ padding: 5px 5px 25px 5px;
+{ padding: .3rem .3rem 1.5rem .3rem;
   background-color: rgba(22, 63, 87, .72);
   display: grid;
   grid-template-columns: 20% 20% 20%  ;
   grid-template-rows: 1fr ;
   grid-gap: 0;
   justify-content: center;
+  width: 100vw;
+  font-family: 'Lexend Exa', cursive;
 }
 
 .HomeNav {
@@ -79,15 +80,19 @@ a {
 }
 .priorities{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 18px;
+  font-size: 1rem;
   display: grid;
-  grid-template-columns: repeat(2, 75%);
-  grid-gap: 10px;
-  border-radius: 1px;
-  max-width: 400px;
+  grid-template-columns: repeat(2, 15vw);
+  grid-gap: 1rem;
+  border-radius: .06rem;
+  max-width: 100vw;
   list-style: none;
   text-align: center;
-
+  padding-bottom: 1rem;
+  justify-content: space-evenly; 
+  /* padding-left: 12%;  */
+  /* width: 40vw; */
+  margin-left: -10%; 
 
 
 
@@ -95,39 +100,44 @@ a {
 
 }
 .todoBox{
-  grid-auto-rows: 45%;
-
-  grid-gap: 10px;
-  border: 1px solid white;
-  border-radius: 5px;
-
+  grid-auto-rows: 50vw;
+  grid-gap: 1rem;
+  /* border: 1px solid white; */
+  background-color: rgba(22, 63, 87, .55);
+  border-radius: .3 rem;
   font-family: 'Lexend Exa', cursive;
-  object-fit: contain;
+  object-fit: fill;
+  width: 15vw;
+  color: #bac7d3;
+  border: 1px solid #bac7d3; 
+  padding: .12rem;
+ 
 }
 
 .todoContainer{
-  display:grid;
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 15px;
-  margin: 5px 30px 5px 30px;
- justify-content:space-evenly ;
-  border-radius: 4px;
-  margin: 2.5% auto; 
-  padding: 0% 50%;
-  width: 25;
+  grid-gap: 1rem;
+  /* margin: 15%; */
+ justify-content: space-evenly ;
+  border-radius: 1rem;
+  margin: 2.5% 0rem; 
+  padding: 0% 5%;
+  width: 100vw;
+
 }
 
 
 .veryHigh{
   
-  border-radius: 8px;
+  border-radius: .5rem;
   background-color: rgba(22, 63, 87, .45);
   width: 40vw;
-
+ 
 }
 .high{
     /* border: 5px solid black; */
-    border-radius: 8px;
+    border-radius: .5rem;
     width: 40vw;
     height: auto;
    background-color: rgba(22, 63, 87, .45)
@@ -135,21 +145,21 @@ a {
 
 .medium{
     /* border: 5px solid black; */
-    border-radius: 8px;
+    border-radius: .5rem;
     width: 40vw;
     height: auto;
     background-color: rgba(22, 63, 87, .45)
 }
 .low{
      /* border: 5px solid black; */
-    border-radius: 8px;
+    border-radius: .5rem;
     width: 40vw;
     height: auto;
     background-color: rgba(22, 63, 87, .45)
 }
 .completed{
     /* border: 5px solid black; */
-    border-radius: 4px;
+    border-radius: .5rem;
     width: 40vw;
     height: auto;
     background-color: rgba(22, 63, 87, .45)
@@ -159,79 +169,112 @@ a {
   background-color: black;
 }
 
-.note.new
+.todoNew
 {
 background-color: rgba(22, 63, 87, .45);
 font-family: 'Lexend Exa', cursive;
 }
+
 .todoFormCSS{
+  width: 40vw;
+  border-radius: .8rem;
+}
+.addTodo{
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: 1fr 2fr;
-  gap: 10px;
+  gap: 1rem;
+  text-align: right;
   line-height: 125%;
+  padding: 1rem;
 }
 .c11 {
   /* border: 5px solid red; */
 	grid-column: 1/ span 2 ;
 	grid-row: 1 ;
-  margin-top: 25px;
+  margin-top: 1.5rem;
+  text-align: center;
 }
 
 .c12 {
   /* border: 5px solid yellow; */
 	grid-column: 1;
 	grid-row: 2;
-  margin-top: 25px;
+  margin-top: 1.5rem;
+  font-family: 'Lexend Exa', cursive;
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+ 
 
 }
 .c22 {
   /* border: 5px solid blue; */
+  background-color: rgba(32, 46, 54, 0.4);
+  color: white;
+  border: none;
+  font-size: 1.2rem;
 	grid-column: 2;
 	grid-row: 2;
-  margin-left: 20px;
-  margin-top: 25px;
+  margin-left: 1.3rem;
+  margin-top: 1.5rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .c13 {
   /* border: 5px solid purple; */
 	grid-column: 1;
 	grid-row: 3;
-  margin-top: 25px;
+  margin-top: 1.5rem;
 
 }
 .c23 {
   /* border: 5px solid black; */
+  background-color: rgba(32, 46, 54, 0.4);
+  color: white;
+  border: none;
+  font-size: 1.2rem;
 	grid-column: 2;
 	grid-row: 3;
-  margin-left: 20px;
-  margin-top: 25px;
+  margin-left: 1.3rem;
+  margin-top: 1.5rem;
 }
 .c14 {
   /* border: 5px solid teal; */
 	grid-column: 1;
 	grid-row: 4;
-  margin-top: 25px;
+  margin-top: 1.5rem;
 }
 .c24 {
   /* border: 5px solid red; */
 	grid-column: 2;
 	grid-row: 4;
-  margin-left: 20px;
-  margin-top: 25px;
+  margin-left: 1.3rem;
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  background-color: rgba(32, 46, 54, 0.4);
+  border: none;
+  padding: .2rem;
+  color:white;
 }
+
+
 .c15 {
   /* border: 5px solid red; */
-	grid-column: 1;
+	grid-column: 2;
 	grid-row: 5;
-  margin-top: 25px;
+  margin-top: 1.5rem;
+  font-size: 2.5rem;
+  text-align: right;
 }
+/* ::placeholder {
+  color:
+} */
 button{
   /* background-color: rgba(22, 63, 87, 0);  */
   background-color: rgba(0, 0, 0, 0.0);
   border: none;
   font-weight: 800;
   color:#91bbd6;
-  font-size: 20px;
+  font-size: 1.25rem;
+  
   /* border:rgba(22, 63, 87, 1) solid 2px; */
   /* margin: 5px;
   padding: 1.25px; */
@@ -241,15 +284,18 @@ button{
   
 }
 
+.updateTodoForm {
+ margin: 2rem auto;
 
+}
 
 
 h3{
-  font-size: 28px;
+  font-size: 1.75rem;
   font-family: 'Lexend Exa', cursive;
   font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   text-align: center;
-  padding: 2px;
+  padding: 0.125rem;
 }
 .quote
 {
@@ -261,7 +307,12 @@ h3{
   justify-self: center;
 }
 
-
+.todaysDate{
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: -5rem;
+  margin-bottom: 5rem;
+}
 
 html { 
   background: url(./bkg1.jpeg) no-repeat center center fixed; 
@@ -275,7 +326,7 @@ html {
 .time
 {
   display: grid;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Noto Sans Mono', monospace;
   color: white; 
   font-size: 500%;
   align-items: center;
@@ -295,17 +346,21 @@ grid-column: 3;
 .note{
  font-family: 'Lexend Exa', cursive;
   background-color: #8aadc5 ;
-  margin-bottom: 10px; 
+  margin-bottom: .625rem; 
   padding: 1rem;
-  border-radius: 10px;
-  min-height: 170px; 
+  border-radius: .625rem;
+  min-height: 10rem; 
   display: flex; 
   flex-direction: column;
   justify-content: space-between;
 
 
 }
-
+.textBoxNote{
+  background-color: #8aadc5;
+  border-color: #8aadc5;
+ 
+}
 .note-footer
 {
   font-family: 'Lexend Exa', cursive;
@@ -330,8 +385,8 @@ grid-column: 3;
 max-width:  960px;
 margin-right: auto;
 margin-left: auto;
-padding-right: 15px;
-padding-left: 15px;
+padding-right: 1rem;
+padding-left: 1rem;
 font-family: 'Oswald', cursive;
 
 }
@@ -339,8 +394,9 @@ font-family: 'Oswald', cursive;
 
 
 textarea{
-  background-color: whitesmoke;
-  border: 2px solid black;
+ 
+  border: none;
+  resize: none;
 }
 
 textarea:focus{
@@ -352,8 +408,8 @@ outline: none;
 .save{
 background-color: #e1e1e1 ;
 border:none;
-border-radius: 15px;
-padding: 5px, 10px, 5px, 10px; 
+border-radius: 1rem;
+padding: .3125rem, .625rem; 
 
 }
 
@@ -406,25 +462,66 @@ margin-right: auto;
 
 @media only screen 
   and (min-device-width: 375px) 
-  and (max-device-width: 812px) 
+  and (max-device-width: 812px)
   and (-webkit-min-device-pixel-ratio: 3) { 
+    .priorities {
+      width: 65vw;
+      display: flex;
+      /* justify-content: center; */
+      flex-direction: column;
+      align-self: center;
+      /* align-content: center; */
+      margin: 0 auto;
+      margin-left: -.02rem;
+      
+    }
+    .high, .veryHigh, .medium, .low, .completed{
+      width: 90vw;
+      text-align: center;
+      justify-content: center;
+      /* grid-template-columns: 1 ; */
+    }
+    .todoContainer{
+      display: inline-block;
+    }
+    .todoBox{
+      width: 60vw;
+    
+      margin: 1rem auto;
+    }
 
+    
 }
 
-/* Portrait */
-@media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 812px) 
-  and (-webkit-min-device-pixel-ratio: 3)
-  and (orientation: portrait) { 
+@media (max-width: 800px){ 
+.priorities {
+      width: 65vw;
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      /* align-content: center; */
+      margin: 0 auto;
+      margin-left: -.02rem;
+      
+    }
+    .high, .veryHigh, .medium, .low, .completed, .addTodo{
+      width: 90vw;
+      text-align: center;
+      justify-content: center;
+      /* grid-template-columns: 1 ; */
+    }
+    .todoContainer{
+      display: inline-block;
+    }
+    .todoBox{
+      width: 60vw;
+    
+      margin: 1rem auto;
+    }
+     .todoFormCSS{
+       margin-top: 1rem;
+       width: 85vw;
+     }
 
-}
 
-/* Landscape */
-@media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 812px) 
-  and (-webkit-min-device-pixel-ratio: 3)
-  and (orientation: landscape) { 
-
-}
+}   

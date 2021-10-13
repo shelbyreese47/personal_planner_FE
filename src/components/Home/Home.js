@@ -52,9 +52,7 @@ const Home = () => {
 				<h1>{home.main.temp}°</h1>
 			</div>
 
-			<div className='weatherstatus'>
-				{home.weather[0].description}  
-			</div>
+			<div className='weatherstatus'>{home.weather[0].description}  </div>
 			<div className='location'>
 				<h4>Boston</h4>
 			</div>
@@ -62,6 +60,7 @@ const Home = () => {
 			<div className='time'>
 				<Clock />
 			</div>
+				<p className="todaysDate">Today's Date: {new Date().toLocaleDateString()}</p>
 
 			{/* <h1 className='welcome'>WELCOME JOY!</h1> */}
 

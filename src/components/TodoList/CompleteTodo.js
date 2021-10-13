@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useParams, useHistory } from 'react-router-dom';
 import TodoList from './TodoList';
 
-
 // const axios = require('axios').default;
 const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 	let initialState = {
@@ -15,15 +14,13 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 		priority: '',
 		completed: false,
 	};
-	
-	
-	
+
 	const { id } = useParams();
 	const history = useHistory();
 	console.log(id);
-	
+
 	const [todoText, setTodoText] = useState(initialState);
-	
+
 	const handleAddTodo = (todo) => {
 		setCount([...count, '']);
 	};
@@ -45,10 +42,10 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 	};
 
 	const handleSaveClick = () => {
-				axios.put(`https://safe-springs-78643.herokuapp.com/api/todos/${id}`, {
-				completed: true,
-			});
-		}
+		axios.put(`https://safe-springs-78643.herokuapp.com/api/todos/${id}`, {
+			completed: true,
+		});
+
 		setTodoText(initialState);
 		axios
 			.get(`https://safe-springs-78643.herokuapp.com/api/todos`)
@@ -78,7 +75,8 @@ const UpdateTodo = ({ setCount, count, setTodos, todo }) => {
 		// "completed": false,
 		// "__v": 0
 
-		<div className='note new'>
+		// <div className='note new'>
+			<div className='todoNew'>
 			<form>
 				<label>Today's Date:</label>
 				<p id='date'>{new Date().toLocaleDateString()}</p>
