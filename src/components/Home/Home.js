@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Clock from '../Clock';
-import weatherAPIKey from '../../apikeys';
+// import weatherAPIKey from '../../apikeys';
 
 const Home = () => {
 	const [home, setHome] = useState();
@@ -11,7 +11,7 @@ const Home = () => {
 
 	const [userCity, setUserCity] = useState('Boston');
 	
-	const apiKey = weatherAPIKey;
+	// const apiKey = weatherAPIKey;
 
 	const handleChange = (event) => {
 		event.preventDefault();
@@ -22,23 +22,24 @@ const Home = () => {
 		setClick(!click);
 	};
 
-	let url = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${apiKey}&units=imperial`;
+	// let url = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${apiKey}&units=imperial`;
 
-	useEffect(() => {
-		fetch(url)
-			.then((res) => res.json())
-			.then((json) => {
-				setHome(json);
-			})
+	// useEffect(() => {
+	// 	fetch(url)
+	// 		.then((res) => res.json())
+	// 		.then((json) => {
+	// 			setHome(json);
+	// 		})
 
-			.catch(console.error);
-	}, [click]);
+	// 		.catch(console.error);
+	// }, [click]);
 
 	useEffect(() => {
 		fetch('https://type.fit/api/quotes')
 			.then((res) => res.json())
 			.then((json) => {
 				setQuote(json);
+				setHome('l')
 				setQuoteClick(false);
 				setIndex(Math.floor(Math.random() * 1644));
 			});
