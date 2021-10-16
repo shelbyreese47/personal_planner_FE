@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Clock from '../Clock';
-// import apiConfig from '../../apikeys';
+import weatherAPIKey from '../../apikeys';
 
 const Home = () => {
 	const [home, setHome] = useState();
@@ -10,6 +10,7 @@ const Home = () => {
 	const [index, setIndex] = useState(0);
 
 	const [userCity, setUserCity] = useState('Boston');
+	
 
 	const handleChange = (event) => {
 		event.preventDefault();
@@ -20,7 +21,7 @@ const Home = () => {
 		setClick(!click);
 	};
 
-	let url = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=5ecef11cefb74010e2528b942ae24f55&units=imperial`;
+	let url = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${weatherAPIKey}&units=imperial`;
 
 	useEffect(() => {
 		fetch(url)
