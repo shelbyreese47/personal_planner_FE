@@ -11,6 +11,7 @@ const Home = () => {
 
 	const [userCity, setUserCity] = useState('Boston');
 	
+	const apiKey = weatherAPIKey;
 
 	const handleChange = (event) => {
 		event.preventDefault();
@@ -21,7 +22,7 @@ const Home = () => {
 		setClick(!click);
 	};
 
-	let url = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${weatherAPIKey}&units=imperial`;
+	let url = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${apiKey}&units=imperial`;
 
 	useEffect(() => {
 		fetch(url)
@@ -53,12 +54,12 @@ const Home = () => {
 	return (
 		<div className='homeContainer'>
 			<div className='weather'>
-				<h1>{home.main.temp}°</h1>
+				{/* <h1>{home.main.temp}°</h1> */}
 			</div>
 
-			<div className='weatherstatus'>{home.weather[0].description}  </div>
+			{/* <div className='weatherstatus'>{home.weather[0].description}  </div> */}
 			<form className='location' onSubmit={handleSubmit}>
-				<h4>{home.name}</h4>
+				{/* <h4>{home.name}</h4> */}
 				<input
 					className='c27'
 					type='text'
